@@ -1,3 +1,6 @@
+package tipos; 
+import utils.*;
+
 
 public class Normal extends Tipo {
     
@@ -6,6 +9,6 @@ public class Normal extends Tipo {
     }
 
     public String getDescricao(){
-        return super.
+        return super;
     }
 }

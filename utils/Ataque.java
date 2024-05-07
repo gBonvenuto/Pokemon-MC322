@@ -3,9 +3,9 @@ public class Ataque {
 
     private String nome;
     private int dano;
-    private Tipo tipo;
+    private Class<Tipo> tipo;
     
-    public Ataque(String nome, int dano, Tipo tipo){
+    public Ataque(String nome, int dano, Class<Tipo> tipo){
         this.nome = nome;
         this.dano = dano;
         this.tipo = tipo;
