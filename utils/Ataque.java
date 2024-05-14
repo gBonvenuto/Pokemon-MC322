@@ -16,12 +16,12 @@ public class Ataque {
     }
 
     /*checklist dos tipos e ataques:
-     * normal (0/4)
-     * água (0/4)
-     * fogo (0/4)
-     * planta (0/4)
-     * inseto (0/4)
-     * venenoso (0/4)
+     * normal (4/4)
+     * água (4/4)
+     * fogo (4/4)
+     * planta (4/4)
+     * inseto (4/4)
+     * veneno (4/4)
      * pedra (0/4)
      * terra (0/4)
      * lutador (0/4)

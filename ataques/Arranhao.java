@@ -5,6 +5,7 @@ import tipos.*;
 
 public class Arranhao extends Ataque{
     public Arranhao(){
-        super("Arranhão", 50, Normal.class);
+        super("Arranhão", 40, Normal);
     }
 }
+//normal
