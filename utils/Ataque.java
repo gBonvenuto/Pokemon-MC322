@@ -22,7 +22,7 @@ public class Ataque {
      * planta (4/4)
      * inseto (4/4)
      * veneno (4/4)
-     * pedra (0/4)
+     * pedra (2/4)
      * terra (0/4)
      * lutador (0/4)
      * fantasma (0/4)
