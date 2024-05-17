@@ -9,15 +9,28 @@ class Servidor{
 
   private Socket clientSocket;
   private PrintWriter out;
-  private BufferReader in;
+  private BufferedReader in;
 
 
   public void conectar(String ip, int port){
     this.ip = ip;
     this.port = port;
-    clientSocket = new Socket(ip, port);
-    out = new PrintWriter(clientSocket.getOutputStream(), true);
-    in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    try {
+      clientSocket = new Socket(ip, port);
+    } catch (Exception e) {
+      // TODO: handle exception
+      System.err.println("");
+    }
+    try {
+      out = new PrintWriter(clientSocket.getOutputStream(), true);
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+    try {
+      in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
   }
 
   public String sendMessage(String msg){
