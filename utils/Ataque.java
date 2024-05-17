@@ -1,40 +1,20 @@
 package utils;
 public class Ataque {
 
-    private String nome;
-    private int dano;
-    private Class<Tipo> tipo;
+    static String nome;
+    static int dano;
+    static Class<? extends Tipo> tipo;
     
-    public Ataque(String nome, int dano, Class<Tipo> tipo){
-        this.nome = nome;
-        this.dano = dano;
-        this.tipo = tipo;
-    }
-
     public String getNome() {
-      return this.nome;
-    }
-    public void setNome(String value) {
-      this.nome = value;
+      return nome;
     }
 
     public int getDano() {
-      return this.dano;
-    }
-    public void setDano(int value) {
-      this.dano = value;
+      return dano;
     }
 
-    public Class<Tipo> getTipo() {
-      return this.tipo;
-    }
-    public void setTipo(Class<Tipo> value) {
-      this.tipo = value;
-    }
-
-
-    public static void atacar(Ataque ataque){
-
+    public Class<? extends Tipo> getTipo() {
+      return tipo;
     }
 
     /*checklist dos tipos e ataques:

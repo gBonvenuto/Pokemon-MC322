@@ -1,23 +1,29 @@
 package tipos;
 
-import utils.Ataque;
+import java.util.ArrayList;
+import java.util.List;
+
 import utils.Tipo;
 
 public class Dragao extends Tipo {
-    
-    public Dragao(String img){
-        super(img);
-        super.setTipo("Dragao");
-    }
 
-    public int defesa(Ataque golpe){
-        if(golpe.getTipo().buscaFraqueza(golpe)){
-            return 2*golpe.getDano();
-        } else if (buscaImunidade(golpe)){
-            return 0;
-        } else if (buscaResistencia(golpe)){
-            return (1/2) * golpe.getDano();
-        }
-        return golpe.getDano();
-    }
+  // TODO: Deixar todos os outros tipos nesse estilo
+  static String tipo = "Dragão";
+  static String img = "path"; // Caminho para imagem do elemento
+  static String resposta = "sla"; // Resposta ao ataque
+                                  
+  // Imunidade causa 0 de dano
+  static ArrayList<Tipo> imunidade = new ArrayList<>(); // Dragão não tem imunidade 
+
+  // Fraquezas
+  static List<Class<? extends Tipo>> fraqueza = List.of(
+      Dragao.class,
+      Gelo.class);
+
+  // Resistencia causa metade do dano
+  static List<Class<? extends Tipo>> resistencia = List.of(
+      Fogo.class,
+      Agua.class,
+      Planta.class,
+      Eletrico.class);
 }
