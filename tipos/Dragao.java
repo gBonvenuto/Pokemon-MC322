@@ -10,8 +10,8 @@ public class Dragao extends Tipo {
         super.setTipo("Dragao");
     }
 
-    public int defesa(Tipo golpe){
-        if(buscaFraqueza(golpe)){
+    public int defesa(Ataque golpe){
+        if(golpe.getTipo().buscaFraqueza(golpe)){
             return 2*golpe.getDano();
         } else if (buscaImunidade(golpe)){
             return 0;

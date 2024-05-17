@@ -2,21 +2,7 @@ package utils;
 
 import java.util.ArrayList;
 
-import tipos.Normal;
-import tipos.Agua;
-import tipos.Dragao;
-import tipos.Eletrico;
-import tipos.Fantasma;
-import tipos.Fogo;
-import tipos.Gelo;
-import tipos.Inseto;
-import tipos.Lutador;
-import tipos.Pedra;
-import tipos.Planta;
-import tipos.Psiquico;
-import tipos.Terra;
-import tipos.Veneno;
-import tipos.Voador;
+import tipos.*;
 
 public class Tipo {
 
@@ -27,6 +13,8 @@ public class Tipo {
     ArrayList<Tipo> imunidade; //Imunidade causa 0 de dano
     ArrayList<Tipo> fraqueza; //Fraqueza gera o dobro do dano
     ArrayList<Tipo> resistencia; //Resistencia causa metade do dano
+
+    public int defesa(){};
 
     //Construtor para golpe
     public Tipo (String descricao, String resposta){

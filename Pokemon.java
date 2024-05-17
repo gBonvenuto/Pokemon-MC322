@@ -96,7 +96,7 @@ public class Pokemon {
         Tipo tipoAdversário = pokemon.getTipo();
 
         // puxar os métodos de defesa da classe tipo
-        this.tipo.defesa(tipoAdversário);
+        this.tipo.defesa(Golpe);
     }
 
 
