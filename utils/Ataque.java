@@ -11,6 +11,28 @@ public class Ataque {
         this.tipo = tipo;
     }
 
+    public String getNome() {
+      return this.nome;
+    }
+    public void setNome(String value) {
+      this.nome = value;
+    }
+
+    public int getDano() {
+      return this.dano;
+    }
+    public void setDano(int value) {
+      this.dano = value;
+    }
+
+    public Class<Tipo> getTipo() {
+      return this.tipo;
+    }
+    public void setTipo(Class<Tipo> value) {
+      this.tipo = value;
+    }
+
+
     public static void atacar(Ataque ataque){
 
     }
@@ -32,4 +54,6 @@ public class Ataque {
      * elétrico (0/4)
      * gelo (0/4)
      */
+
+    
 }
