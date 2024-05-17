@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+<<<<<<< HEAD
+=======
+import package Tipos;
+
+>>>>>>> implemetacao-pokemon
 
 public class Pokemon {
 
@@ -94,18 +99,8 @@ public class Pokemon {
         // a função de defesa tem que considerar o tipo do atcante e do meu pokemon
         Tipo tipoAdversário = pokemon.getTipo;
 
-        if (tipoAdversário == this.tipo.getResistence()){ // suponho que tenha uma classe para pegar a resistencia e fraqueza de cada tipo na classe tipo
-            this.vida -= dano/2;
-        }
-
-        else if(tipoAdversário == this.tipo.getFraqueza()){
-            this.vida -= dano*2;
-        }
-
-        debuff = pokemon.ataque.getDebuff();  // suponho que o debuff esteja na classe de ataque
-        if (debuff != null){
-            debuffs.add(debuff);
-        }
+        // puxar os métodos de defesa da classe tipo
+        this.tipo.defesa(tipoAdversário);
     }
 
 
