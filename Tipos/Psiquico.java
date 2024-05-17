@@ -1,4 +1,4 @@
-package Tipos;
+package tipos;
 
 import utils.Ataque;
 import utils.Tipo;

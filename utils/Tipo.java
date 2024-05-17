@@ -2,21 +2,21 @@ package utils;
 
 import java.util.ArrayList;
 
-import Tipos.Normal;
-import Tipos.Agua;
-import Tipos.Dragao;
-import Tipos.Eletrico;
-import Tipos.Fantasma;
-import Tipos.Fogo;
-import Tipos.Gelo;
-import Tipos.Inseto;
-import Tipos.Lutador;
-import Tipos.Pedra;
-import Tipos.Planta;
-import Tipos.Psiquico;
-import Tipos.Terra;
-import Tipos.Veneno;
-import Tipos.Voador;
+import tipos.Normal;
+import tipos.Agua;
+import tipos.Dragao;
+import tipos.Eletrico;
+import tipos.Fantasma;
+import tipos.Fogo;
+import tipos.Gelo;
+import tipos.Inseto;
+import tipos.Lutador;
+import tipos.Pedra;
+import tipos.Planta;
+import tipos.Psiquico;
+import tipos.Terra;
+import tipos.Veneno;
+import tipos.Voador;
 
 public class Tipo {
 
