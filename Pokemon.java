@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-<<<<<<< HEAD
-=======
-import package Tipos;
 
->>>>>>> implemetacao-pokemon
+import utils.*;
+
 
 public class Pokemon {
 
@@ -23,10 +21,6 @@ public class Pokemon {
     ArrayList<Ataque> ataques = new ArrayList<>();
 
     Defesa defesa; // todo pokemon pode se defender
-
-    T debuff;
-
-    ArrayList <T> debuffs = new ArrayList<>(); 
 
     public Pokemon(String nome, Tipo tipo){
         this.nome = nome;
@@ -85,7 +79,9 @@ public class Pokemon {
                     
                 case 4 -> ataques.get(3).getDano();
                     
-                default -> System.out.println("Escolha inválida. Por favor, insira um número entre 1 e 4.");
+                default -> -1;
+                  // TODO: printar a seguinte mensagem se retornar -1
+                  // System.out.println("Escolha inválida. Por favor, insira um número entre 1 e 4.");
             };
 
         } while (escolha < 1 || escolha > 4); // restringe a escolha do usuário
@@ -97,7 +93,7 @@ public class Pokemon {
     public void defender(Pokemon pokemon, int dano){ // na função de lógica de jogo eu vou ter que lembrar disso ( associar o ataque de um pokemon ao outro)
         
         // a função de defesa tem que considerar o tipo do atcante e do meu pokemon
-        Tipo tipoAdversário = pokemon.getTipo;
+        Tipo tipoAdversário = pokemon.getTipo();
 
         // puxar os métodos de defesa da classe tipo
         this.tipo.defesa(tipoAdversário);
