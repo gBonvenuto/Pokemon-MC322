@@ -1,7 +1,7 @@
 Grupo: 
 
 - Giancarlo Bonvenuto - 248527
-- Thiago
+- Thiago Augusto de Tulio Nascimento - 252937
 - Pedro
 - Pedro Henrique Pinheiro Linhares - 175807
 
