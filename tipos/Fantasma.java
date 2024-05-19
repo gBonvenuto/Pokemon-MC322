@@ -1,23 +1,29 @@
 package tipos;
 
-import utils.Ataque;
 import utils.Tipo;
 
-public class Fantasma extends Tipo {
-    
-    public Fantasma(String img){
-        super(img);
-        super.setTipo("Fantasma");
-    }
+import java.util.List;
 
-    public int defesa(Tipo golpe){
-        if(buscaFraqueza(golpe)){
-            return 2*golpe.getDano();
-        } else if (buscaImunidade(golpe)){
-            return 0;
-        } else if (buscaResistencia(golpe)){
-            return (1/2) * golpe.getDano();
-        }
-        return golpe.getDano();
-    }
+public class Fantasma extends Tipo {
+
+  static String tipo = "Fantasma";
+  static String img = "path"; // Caminho para imagem do elemento
+                                  
+  // Imunidade causa 0 de dano
+  static List<Class<? extends Tipo>> imunidade = List.of(
+      Normal.class,
+      Lutador.class
+      ); 
+
+  // Fraquezas
+  static List<Class<? extends Tipo>> fraqueza = List.of(
+      Fantasma.class
+      );
+
+  // Resistencia causa metade do dano
+  static List<Class<? extends Tipo>> resistencia = List.of(
+      Veneno.class,
+      Inseto.class
+      );
+
 }

@@ -1,23 +1,29 @@
 package tipos;
 
-import utils.Ataque;
 import utils.Tipo;
 
-public class Veneno extends Tipo {
-    
-    public Veneno(String img){
-        super(img);
-        super.setTipo("Veneno");
-    }
+import java.util.ArrayList;
+import java.util.List;
 
-    public int defesa(Tipo golpe){
-        if(buscaFraqueza(golpe)){
-            return 2*golpe.getDano();
-        } else if (buscaImunidade(golpe)){
-            return 0;
-        } else if (buscaResistencia(golpe)){
-            return (1/2) * golpe.getDano();
-        }
-        return golpe.getDano();
-    }
+public class Veneno extends Tipo {
+
+  static String tipo = "Veneno";
+  static String img = "path"; // Caminho para imagem do elemento
+                                  
+  // Imunidade causa 0 de dano
+  static List<Class<? extends Tipo>> imunidade = new ArrayList<>(); // Veneno não tem imunidade 
+
+  // Fraquezas
+  static List<Class<? extends Tipo>> fraqueza = List.of(
+      Terra.class,
+      Inseto.class,
+      Psiquico.class
+      );
+
+  // Resistencia causa metade do dano
+  static List<Class<? extends Tipo>> resistencia = List.of(
+      Lutador.class,
+      Veneno.class,
+      Planta.class
+      );
 }
