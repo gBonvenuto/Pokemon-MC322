@@ -3,7 +3,6 @@ import java.util.Scanner;
 class Jogador {
   private String nome;
   private Pokemon[] pokemons = new Pokemon[4]; // Cada jogador terá somente 4 pokemons
-  private List<Item> itens = new ArrayList<Item>();
 
   Jogador(String nome) {
     this.nome = nome;
