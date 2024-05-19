@@ -2,7 +2,7 @@ Grupo:
 
 - Giancarlo Bonvenuto - 248527
 - Thiago Augusto de Tulio Nascimento - 252937
-- Pedro
+- Pedro Henrique dos Reis Arcoverde - 254719
 - Pedro Henrique Pinheiro Linhares - 175807
 
 ![Gráfico UML](./Grafico_UML.jpeg)
