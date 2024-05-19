@@ -3,7 +3,7 @@ Grupo:
 - Giancarlo Bonvenuto - 248527
 - Thiago
 - Pedro
-- Pedro
+- Pedro Henrique Pinheiro Linhares - 175807
 
 ![Gráfico UML](./Grafico_UML.jpeg)
 
