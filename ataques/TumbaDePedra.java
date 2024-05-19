@@ -4,8 +4,9 @@ import utils.*;
 import tipos.*;
 
 public class TumbaDePedra extends Ataque{
-    public TumbaDePedra(){
-        super("Tumba de Pedra", 50, Pedra);
-    }
+    static String nome = "Tumba de pedra";
+    static int dano = 50;
+    static Class<? extends Tipo> tipo = Pedra.class;
 }
+
 //pedra

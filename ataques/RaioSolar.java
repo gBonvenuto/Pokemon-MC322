@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class RaioSolar extends Ataque{
-    public RaioSolar(){
-        super("Raio Solar", 60, Planta);
-    }
+    static String nome = "Raio solar";
+    static int dano = 50;
+    static Class<? extends Tipo> tipo = Planta.class;
 }
 //planta

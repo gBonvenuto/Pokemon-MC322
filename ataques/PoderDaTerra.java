@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class PoderDaTerra extends Ataque{
-    public PoderDaTerra(){
-        super("Poder da Terra", 50, Terra);
-    }
+    static String nome = "Poder da Terra";
+    static int dano = 50;
+    static Class<? extends Tipo> tipo = Terra.class;
 }
 //terra

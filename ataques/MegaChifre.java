@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class MegaChifre extends Ataque{
-    public MegaChifre(){
-        super("Mega Chifre", 60, Inseto);
-    }
+    static String nome = "Mega chifre";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Inseto.class;
 }
 //inseto

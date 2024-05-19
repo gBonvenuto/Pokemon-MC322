@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class Maldicao extends Ataque{
-    public Maldicao(){
-        super("Maldição", 50, Fantasma);
-    }
+    static String nome = "Maldição";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Fantasma.class;
 }
 //fantasma

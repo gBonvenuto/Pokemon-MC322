@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class MissilDeEspinhos extends Ataque{
-    public MissilDeEspinhos(){
-        super("Míssil de Espinhos", 50, Inseto);
-    }
+    static String nome = "Míssel de espinhos";
+    static int dano = 50;
+    static Class<? extends Tipo> tipo = Inseto.class;
 }
 //inseto

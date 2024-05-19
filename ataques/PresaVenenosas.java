@@ -4,8 +4,8 @@ import utils.*;
 import tipos.*;
 
 public class PresaVenenosas extends Ataque{
-    public PresaVenenosas(){
-        super("Presas Venenosa", 50, Veneno);
-    }
+    static String nome = "Presa venenosa";
+    static int dano = 50;
+    static Class<? extends Tipo> tipo = Veneno.class;
 }
 //veneno
