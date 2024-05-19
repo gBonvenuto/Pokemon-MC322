@@ -10,7 +10,7 @@ Projeto de pokemon no Terminal para a disciplina de MC322
 ### Fora das pastas:
 - Fora das pastas nós temos os arquivos:
 - **Jogador**: Vai possuir, no seu contrutor a inicialização de um jogador, e no corpo do código algumas funções para o funcionamento da classe, tais como escolha do pokemon;
-- **Pokemon**: A classe pokemon vai possuir as funções necessárias para a manipulação e insstanciação de um pokemon ao time do jogador e funcionamento em uma futura batalha;
+- **Pokemon**: A classe pokemon vai possuir as funções necessárias para a manipulação e instanciação de um pokemon ao time do jogador e funcionamento em uma futura batalha;
 - Alguns exemplos de funções importantes são a função de ataque e defesa, a função ataque vai retornar um valor int do dano, enquanto a função defesa vai receber esse valor como argumento e, juntamente do tipo do pokemon, fazer o cálculo do que vai ser realmente retirado da vida total do pokemon;
 - obs: Na classe pokemon vamos ter um enum de exatamente 30 pokemons que poderão ser adicionados ao time do jogador (MAX = 4);
 
