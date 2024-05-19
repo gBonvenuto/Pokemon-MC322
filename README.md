@@ -1,3 +1,10 @@
+Grupo: 
+
+Giancarlo Bonvenuto - 248527
+Thiago
+Pedro
+Pedro
+
 ![Gráfico UML](./Grafico_UML.jpeg)
 
 # Como executar
