@@ -1,4 +1,4 @@
-![Gráfico UML](./Grafico_Uml.jpeg)
+![Gráfico UML](./Grafico_UML.jpeg)
 
 # Como executar
 
