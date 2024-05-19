@@ -1,3 +1,5 @@
+![Gráfico UML](./Gráfico_Uml.jpeg)
+
 # Como executar
 
 Primeiro clone o repositório:
