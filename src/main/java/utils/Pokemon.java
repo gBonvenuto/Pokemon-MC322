@@ -8,23 +8,20 @@ import tipos.*;
 
 public class Pokemon {
 
-  // iniciando a classe pokemon
-
-  // variáveis
   String nome;
-  int vida = 300; // todos os pokemons iniciam com 100 de vida
+  int vida = 300; // todos os pokemons iniciam com 300 de vida
 
-  // vraiáveis espciais
-  Class<? extends Tipo> tipo; // todo pokemon possui um tipo espcífico --> apenas um por pokemon
+  List<Class<? extends Tipo>> tipo;
+  List<Class<? extends Ataque>> ataques = new ArrayList<>();  
+  // tipo e ataques são listas das classes e não listas de objetos porque não
+  // é necessário instanciar um objeto do ataque. Todos os seus métodos são
+  // estáticos de forma a melhorar a performance do jogo.
 
-  ArrayList<Class<? extends Ataque>> ataques = new ArrayList<>();
-
-  public Pokemon(String nome, Class<? extends Tipo> tipo) {
+  public Pokemon(String nome, List<Class<? extends Tipo>> tipo, List<Class<? extends Ataque>> ataques) {
     this.nome = nome;
     this.tipo = tipo;
+    this.ataques = ataques;
   }
-
-  // métodos implementação
 
   public int getVida() {
     return this.vida;
@@ -34,16 +31,20 @@ public class Pokemon {
     return this.nome;
   }
 
-  public Class<? extends Tipo> getTipo() {
+  public List<Class<? extends Tipo>> getTipo() {
     return this.tipo;
+  }
+  public List<Class<? extends Ataque>> getAtaques() {
+    return this.ataques;
   }
 
   // método de atacar
+  // TODO: O funcionamento deste método ficará mais claro na parte 2 quando implementarmos
+  // o modo multiplayer
   public int ataca(Pokemon pokemon) {
-    // deve escolher o ataque --> é bom que isso seja uma subescolha de um menu de
-    // ações
+    // deve escolher o ataque
     Scanner sc = new Scanner(System.in);
-    System.out.println("Escolha o ataque"); // suponho que exista uma função getNomeAtaque
+    System.out.println("Escolha o ataque"); 
 
     int i = 0;
     int dano = 0;
@@ -70,26 +71,23 @@ public class Pokemon {
 
       escolha = sc.nextInt();
 
+      // Cada pokemon tem 4 ataques 
       try {
         dano = switch (escolha) {
 
           case 1 -> (int) ataques.get(0).getMethod("getDano").invoke(null);
 
-          case 2 -> (int) ataques.get(0).getMethod("getDano").invoke(null);
+          case 2 -> (int) ataques.get(1).getMethod("getDano").invoke(null);
 
-          case 3 -> (int) ataques.get(0).getMethod("getDano").invoke(null);
+          case 3 -> (int) ataques.get(2).getMethod("getDano").invoke(null);
 
-          case 4 -> (int) ataques.get(0).getMethod("getDano").invoke(null);
+          case 4 -> (int) ataques.get(3).getMethod("getDano").invoke(null);
 
           default -> -1;
 
-          // TODO: printar a seguinte mensagem se retornar -1
-          // System.out.println("Escolha inválida. Por favor, insira um número entre 1 e
-          // 4.");
         };
       } catch (Exception e) {
         System.err.println("Não foi possível acessar esse ataque");
-
       }
 
     } while (escolha < 1 || escolha > 4); // restringe a escolha do usuário
@@ -103,12 +101,13 @@ public class Pokemon {
 
     // puxar os métodos de defesa da classe tipo
     try {
-      this.tipo.getMethod("defesa").invoke(ataque);
+      this.tipo.getClass().getMethod("defesa").invoke(ataque);
     } catch (Exception e) {
       System.err.println("Não foi possível acessar essa defesa");
     }
   }
 
+  // Temos enum de pokemons que são possíveis escolher.
   public static enum pokemon {
     BULBASAUR(1, "Bulbasaur", List.of(Planta.class, Veneno.class), new ArrayList<>()),
     IVYSAUR(2, "Ivysaur", List.of(Planta.class, Veneno.class), new ArrayList<>()),

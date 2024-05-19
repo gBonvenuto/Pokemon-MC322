@@ -6,19 +6,24 @@ public abstract class Tipo {
 
   static String tipo = "";
   static String img; // Caminho para imagem do elemento
-  static String resposta; // Resposta ao ataque
   static List<Class<? extends Tipo>> imunidade; // Imunidade causa 0 de dano
   static List<Class<? extends Tipo>> fraqueza; // Fraqueza gera o dobro do dano
   static List<Class<? extends Tipo>> resistencia; // Resistencia causa metade do dano
 
-  // Esta função calcula a quantidade de dano que o Tipo Dragão deve levar
+  // Esta função calcula a quantidade de dano que o Tipo deve levar
   // dependendo do golpe que ele levou
   public int defesa(Ataque golpe) {
+    // As fraquezas duplicam o dano levado
     if (this.buscaFraqueza(golpe.getTipo())) {
       return 2 * golpe.getDano();
-    } else if (this.buscaImunidade(golpe.getTipo())) {
+
+    }
+    // As imunidades fazem com que o pokemon não leve dano
+    else if (this.buscaImunidade(golpe.getTipo())) {
       return 0;
-    } else if (this.buscaResistencia(golpe.getTipo())) {
+    }
+    // As resistências reduzem o dano pela metade
+    else if (this.buscaResistencia(golpe.getTipo())) {
       return (1 / 2) * golpe.getDano();
     }
     return golpe.getDano();
@@ -32,9 +37,9 @@ public abstract class Tipo {
     return img;
   }
 
-  public String getResposta() {
-    return resposta;
-  }
+
+  // As próximas três funções verificam se o tipo do golpe pertence à 
+  // Imunidade, Fraqueza ou Resistência do Tipo que recebeu o ataque
 
   public boolean buscaImunidade(Class<? extends Tipo> elemento) {
     for (int i = 0; i < imunidade.size(); i++) {

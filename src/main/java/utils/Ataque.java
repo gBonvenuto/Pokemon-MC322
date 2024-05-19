@@ -6,7 +6,7 @@ public abstract class Ataque {
 
   static String nome;
   static int dano;
-  static Class<? extends Tipo> tipo;
+  static Class<? extends Tipo> tipo; // Todo ataque possui um tipo próprio
 
   public String getNome() {
     return nome;
@@ -20,6 +20,8 @@ public abstract class Ataque {
     return tipo;
   }
 
+  // Todos os ataques estão enumerados para que possam ser escolhidos de forma
+  // aleatória no momento que o jogador escolhe o pokemon
   public static enum ataques {
 
     ACIDO(Acido.class),
@@ -79,7 +81,9 @@ public abstract class Ataque {
     }
 
   }
+  
 
+  // TODO: Terminar de implementar os ataques para a parte 2
   /*
    * checklist dos tipos e ataques:
    * normal (4/4)
