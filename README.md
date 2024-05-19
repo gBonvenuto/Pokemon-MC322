@@ -1,3 +1,17 @@
+# Como executar
+
+Primeiro clone o repositório:
+
+`git clone https://github.com/gBonvenuto/Pokemon-MC322`
+
+Em seguida compile os arquivo:
+
+`javac -d bin -sourcepath src src/main/java/main/Main.java src/main/java/utils/* src/main/java/tipos/* src/main/java/ataques/*`
+
+E então rode o jogo
+
+`java -cp main.Main`
+
 # Pokemon-MC322 V-1.0
 Projeto de pokemon no Terminal para a disciplina de MC322
 ## Descrição do projeto
