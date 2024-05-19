@@ -1,6 +1,5 @@
 package tipos;
 
-import utils.Ataque;
 import utils.Tipo;
 
 import java.util.ArrayList;
