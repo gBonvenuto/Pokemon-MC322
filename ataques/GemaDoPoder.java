@@ -4,8 +4,10 @@ import utils.*;
 import tipos.*;
 
 public class GemaDoPoder extends Ataque{
-    public GemaDoPoder(){
-        super("Gema do Poder", 60, Pedra);
-    }
+        
+  static String nome = "Gema do Poder";
+  static int dano = 60;
+  static Class<? extends Tipo> tipo = Pedra.class;
+
 }
-//pedra
+// pedra

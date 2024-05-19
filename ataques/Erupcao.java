@@ -4,8 +4,10 @@ import utils.*;
 import tipos.*;
 
 public class Erupcao extends Ataque{
-    public Erupcao(){
-        super("Erupção", 60, fogo);
-    }
+    
+  static String nome = "Erupção";
+  static int dano = 60;
+  static Class<? extends Tipo> tipo = Fogo.class;
+
 }
-//fogo
+// fogo

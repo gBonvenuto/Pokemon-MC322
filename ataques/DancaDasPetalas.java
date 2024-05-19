@@ -4,8 +4,10 @@ import utils.*;
 import tipos.*;
 
 public class DancaDasPetalas extends Ataque{
-    public DancaDasPetalas(){
-        super("Dança das Pétalas", 60, Planta);
-    }
+    
+  static String nome = "Dança das Pétalas";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Planta.class;
+
 }
-//planta
+// planta

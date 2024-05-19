@@ -4,8 +4,10 @@ import utils.*;
 import tipos.*;
 
 public class Investida extends Ataque{
-    public Investida(){
-        super("Investida", 40, Normal);
-    }
+       
+  static String nome = "Insvestida";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Normal.class;
+
 }
-//normal
+// normal

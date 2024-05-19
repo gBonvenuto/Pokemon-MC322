@@ -3,9 +3,11 @@ package ataques;
 import utils.*;
 import tipos.*;
 
-public class ChicoteDeVinhas extends Ataque{
-    public ChicoteDeVinhas(){
-        super("Chicote de Vinhas", 50, Planta);
-    }
+public class ChicoteDeVinhas extends Ataque {
+
+  static String nome = "Chicote de Vinhas";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Planta.class;
+
 }
-//planta
+// planta

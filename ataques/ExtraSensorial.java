@@ -4,8 +4,10 @@ import utils.*;
 import tipos.*;
 
 public class ExtraSensorial extends Ataque{
-    public ExtraSensorial(){
-        super("Extra-Sensorial", 50, Psiquico);
-    }
+        
+  static String nome = "Extra-Sensorial";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Psiquico.class;
+
 }
-//psíquico
+// psíquico

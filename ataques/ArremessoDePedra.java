@@ -3,9 +3,11 @@ package ataques;
 import utils.*;
 import tipos.*;
 
-public class ArremessoDePedra extends Ataque{
-    public ArremessoDePedra(){
-        super("Arremesso de Pedra", 50, Pedra);
-    }
+public class ArremessoDePedra extends Ataque {
+
+  static String nome = "Arremesso de Pedra";
+  static int dano = 50;
+  static Class<? extends Tipo> tipo = Pedra.class;
+
 }
-//pedra
+// pedra
