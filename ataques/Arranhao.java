@@ -9,5 +9,6 @@ public class Arranhao extends Ataque {
   static int dano = 50;
   static Class<? extends Tipo> tipo = Normal.class;
 
+  
 }
 // normal

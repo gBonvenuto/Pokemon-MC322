@@ -1,5 +1,5 @@
 package utils;
-public class Ataque {
+public abstract class Ataque {
 
     static String nome;
     static int dano;

@@ -9,5 +9,6 @@ public class ChuteDuplo extends Ataque {
   static int dano = 50;
   static Class<? extends Tipo> tipo = Lutador.class;
 
+  
 }
 // lutador

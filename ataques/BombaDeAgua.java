@@ -9,5 +9,7 @@ public class BombaDeAgua extends Ataque {
   static int dano = 60;
   static Class<? extends Tipo> tipo = Agua.class;
 
+  
+
 }
 // água

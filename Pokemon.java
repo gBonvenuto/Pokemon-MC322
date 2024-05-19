@@ -49,12 +49,11 @@ public class Pokemon {
         // deve escolher o ataque --> é bom que isso seja uma subescolha de um menu de ações
         Scanner sc = new Scanner(System.in);
         System.out.println("Escolha o ataque"); // suponho que exista uma função getNomeAtaque
-
-        int i = 0;
         int dano;
+        int i = 0;
         for (Ataque at: ataques){
             i++;
-            System.out.println(i + at.getNomeAtaque);
+            System.out.println(i + at.getNome());
         }
         
         int escolha = sc.nextInt();
@@ -84,8 +83,8 @@ public class Pokemon {
             };
 
         } while (escolha < 1 || escolha > 4); // restringe a escolha do usuário
-
         sc.close();
+       return dano;
 
     }
 
