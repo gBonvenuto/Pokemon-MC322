@@ -190,10 +190,12 @@ public class Pokemon {
     }
 
     // Printa uma lista no stdout
-    public static void lista() {
+    public static String[] lista() {
+      String[] lista = new String[30];
       for (pokemon pokemon : pokemon.values()) {
-        System.out.println("\t" + pokemon.getName());
+        lista[pokemon.number-1] = pokemon.getName();
       }
+      return lista;
     }
 
   }
