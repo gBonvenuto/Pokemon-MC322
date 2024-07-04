@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Batalha_Interface extends JFrame {
-  private Icon pokemon1;
-  private Icon pokemon2;
   Font fonte = new Font("serif", Font.PLAIN, 50);
 
   public Batalha_Interface() {
@@ -73,20 +71,25 @@ public class Batalha_Interface extends JFrame {
 
     atacar_button.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e) { 
-
-        Jogo.setEscolha(1); 
+      public void actionPerformed(ActionEvent e) {
+        Jogo.setAtaque(pokemonAtual.ataques.get(ataques.getSelectedIndex()));
+        Jogo.setEscolha(1);
+        Jogo.tick();
       }
     });
 
     trocar_button.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e) { Jogo.setEscolha(2); }
+      public void actionPerformed(ActionEvent e) {
+        Jogo.setEscolha(2);
+      }
     });
 
     correr_button.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e) { Jogo.setEscolha(3); }
+      public void actionPerformed(ActionEvent e) {
+        Jogo.setEscolha(3);
+      }
     });
 
     return panel;

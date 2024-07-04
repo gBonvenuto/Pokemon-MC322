@@ -31,12 +31,20 @@ public class Pokemon {
     return this.nome;
   }
 
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
   public List<Class<? extends Tipo>> getTipo() {
     return this.tipo;
   }
 
   public List<Class<? extends Ataque>> getAtaques() {
     return this.ataques;
+  }
+
+  public void setAtaques(List<Class<? extends Ataque>> ataques) {
+    this.ataques = ataques;
   }
 
   public String[] getAtaquesString() {

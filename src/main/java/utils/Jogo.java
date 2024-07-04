@@ -1,4 +1,5 @@
 package utils;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Jogo{
@@ -29,22 +30,6 @@ class Jogo{
 
     if(temVencedor = false){
 
-      // 1. cada jogador escolhe o seu pokemon
-      // log.logAcao("Escolhe pokemon", jogador_da_vez.getName()); // fase de escolha de pokemon
-      // log.SalvaAcaoArquivo("log.java");
-      // int poke_index = reader.nextInt();
-      // Pokemon pokemon_da_vez = jogador_da_vez.getPokemon(poke_index); // temos o pokemon que vai atacar
-      // jogador_da_vez.setPokemonAtual(poke_index);
-      // 
-      // log.logAcao("Escolhe pokemon", jogador_inimigo.getName()); // fase de escolha de pokemon
-      // log.SalvaAcaoArquivo("log.java");
-      // int poke_index2 = reader.nextInt();
-      // Pokemon pokemon_inimigo = jogador_inimigo.getPokemon(poke_index2);
-
-      // geramos o menu
-      // System.out.println("******* Menu *******");
-      // System.out.println("1. Atacar\n2. Trocar Pokemon\n3. Correr");
-
       Pokemon pokemon_da_vez = jogador_da_vez.getPokemonAtual();
       Pokemon pokemon_inimigo = jogador_inimigo.getPokemonAtual();
 
@@ -70,8 +55,9 @@ class Jogo{
           break;
       }
       if (pokemon_inimigo.getVida() <= 0){
-        System.out.printf("%s venceu", jogador_da_vez);
-        log.logAcao("Venceu", jogador_da_vez.getName());
+        System.out.printf("%s morreu", pokemon_inimigo);
+        pokemon_inimigo.setNome(pokemon_inimigo.getNome()+" (Morto)");
+        pokemon_inimigo.setAtaques(new ArrayList<>());
         log.SalvaAcaoArquivo("log.java");
       }
 
