@@ -3,8 +3,6 @@ import utils.*;
 
 public class Main {
   public static void main(String[] args) {
-    // Instanciar o jogador
-    Jogador jogador = new Jogador();
-    System.out.println(jogador);
+    InicializarJogador_Interface.main(args);
   }
 }
