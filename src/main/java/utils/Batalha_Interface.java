@@ -76,7 +76,7 @@ public class Batalha_Interface extends JFrame {
       
       @Override
       public void actionPerformed(ActionEvent e) {
-        Jogo.setEscolha(1);
+        // Jogo.setEscolha(1);
       }
     });
 
