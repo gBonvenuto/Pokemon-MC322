@@ -2,16 +2,9 @@ package utils;
 
 import java.util.Scanner;
 
-import utils.Pokemon.pokemon;
 
 import java.util.List;
 
-// TODO: Devido ao tempo não foi possível implementar o servidor, e por isso
-// ainda não implementamos a sobrecarga de métodos na classe Jogador
-//
-// Como o jogo será multiplayer, instanciaremos 2 jogadores e faremos 
-// sobrecarga de métodos dependendo se é o jogador local ou o externo
-// Ao finalizar o servidor começar a montar a parte do jogador externo
 public class Jogador {
 
   Scanner scanner = new Scanner(System.in);
