@@ -1,7 +1,8 @@
 package utils;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicScrollBarUI;
+
+import utils.Pokemon.pokemon;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,26 +25,27 @@ public class InicializarJogador_Interface extends JFrame {
   private int jogador = 0;
 
   public InicializarJogador_Interface() {
-    if(Jogo.getJogador1() == null)
+    if (Jogo.getJogador1() == null)
       jogador = 1;
-    else if(Jogo.getJogador2() == null)
+    else if (Jogo.getJogador2() == null)
       jogador = 2;
 
-    if(jogador == 1)
+    if (jogador == 1)
       setTitle("Seleção do Jogador 1");
-    else if(jogador == 2)
+    else if (jogador == 2)
       setTitle("Seleção do Jogador 2");
 
     setSize(400, 300);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
     setLayout(new BorderLayout());
 
     // Painel para o nome do jogador
     JPanel nomePanel = new JPanel();
     nomePanel.setLayout(new FlowLayout());
-    if(jogador==1)
+    if (jogador == 1)
       nomePanel.add(new JLabel("Nome do jogador 1:"));
-    if(jogador==2)
+    if (jogador == 2)
       nomePanel.add(new JLabel("Nome do jogador 2:"));
     nomeField = new JTextField(20);
     nomePanel.add(nomeField);
@@ -100,22 +102,37 @@ public class InicializarJogador_Interface extends JFrame {
 
     // Ação do botão de selecionar pokémons
     selecionarButton.addActionListener(new ActionListener() {
+
       @Override
       public void actionPerformed(ActionEvent e) {
+
         String nomeJogador = nomeField.getText();
+
         if (nomeJogador.isEmpty()) {
           JOptionPane.showMessageDialog(InicializarJogador_Interface.this,
               "Por favor, insira o nome do jogador.", "Erro", JOptionPane.ERROR_MESSAGE);
           return;
         }
 
+        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon1.getSelectedItem()).inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon2.getSelectedItem()).inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon3.getSelectedItem()).inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon4.getSelectedItem()).inicializarPokemon());
+
+        // Se Tivermos selecionado o jogador1, vamos agora selecionar o jogador 2
+        if (jogador == 1)
+          InicializarJogador_Interface.main(new String[0]); // Inicializa o Jogador 2
+        dispose();
+        if (jogador == 2)
+          System.out.println("Iniciando o jogo");
+
         // TODO: Lógica de selecionar os pokemons
 
       }
     });
-    if(Jogo.getJogador1() == null)
+    if (Jogo.getJogador1() == null)
       Jogo.setJogador1(new Jogador(nomeField.toString(), pokemonsEscolhidos));
-    else if(Jogo.getJogador2() == null)
+    else if (Jogo.getJogador2() == null)
       Jogo.setJogador2(new Jogador(nomeField.toString(), pokemonsEscolhidos));
   }
 
