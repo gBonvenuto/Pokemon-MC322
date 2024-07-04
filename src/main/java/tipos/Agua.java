@@ -13,6 +13,11 @@ public class Agua extends Tipo {
   // Imunidade causa 0 de dano
   static List<Class<? extends Tipo>> imunidade = new ArrayList<>(); // Agua não tem imunidade
 
+  @Override
+  public String getTipo() {
+    return tipo;
+  }
+
   // Fraquezas
   static List<Class<? extends Tipo>> fraqueza = List.of(
       Planta.class,

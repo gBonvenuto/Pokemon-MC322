@@ -8,6 +8,11 @@ public class Terra extends Tipo {
 
   static String tipo = "Terra";
   static String img = "path"; // Caminho para imagem do elemento
+
+  @Override
+  public String getTipo() {
+    return tipo;
+  }
                                   
   // Imunidade causa 0 de dano
   static List<Class<? extends Tipo>> imunidade = List.of(
