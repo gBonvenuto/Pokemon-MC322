@@ -1,7 +1,6 @@
 package utils;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.List;
 
 // TODO: Devido ao tempo não foi possível implementar o servidor, e por isso
