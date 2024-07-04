@@ -6,6 +6,7 @@ class Jogo{
   // A lógica de jogo será implementada na parte 2
   boolean temVencedor = false;
 
+  Savelog log = new Savelog();
 
   private static Jogador jogador1 = null;
   private static Jogador jogador2 = null;
@@ -37,16 +38,19 @@ class Jogo{
         return false;
     }
 
+
     while (this.temVencedor = false){
 
 
       // 1. cada jogador escolhe o seu pokemon
-      System.out.printf("%s escolha o pokemon a atacar", jogador_da_vez.getName()); // fase de escolha de pokemon
+      log.logAcao("Escolhe pokemon", jogador_da_vez.getName()); // fase de escolha de pokemon
+      log.SalvaAcaoArquivo("log.txt");
       int poke_index = reader.nextInt();
       Pokemon pokemon_da_vez = jogador_da_vez.getPokemon(poke_index); // temos o pokemon que vai atacar
       jogador_da_vez.setPokemonAtual(poke_index);
       
-      System.out.printf("%s escolha o pokemon a atacar", jogador_inimigo); // fase de escolha de pokemon
+      log.logAcao("Escolhe pokemon", jogador_inimigo.getName()); // fase de escolha de pokemon
+      log.SalvaAcaoArquivo("log.txt");
       int poke_index2 = reader.nextInt();
       Pokemon pokemon_inimigo = jogador_inimigo.getPokemon(poke_index2);
 
@@ -58,12 +62,14 @@ class Jogo{
 
       switch (escolha) {
         case 1: // caso de ataque
-          System.out.printf("%s ataca", jogador_da_vez.getName());
+          log.logAcao("Vai atacar", jogador_da_vez.getName());
+          log.SalvaAcaoArquivo("log.txt");
           pokemon_da_vez.ataca(pokemon_inimigo);
           break;
       
         case 2: // caso de troca de pokemon - refaz a escolha do pokemon -
-          System.out.printf("%s vai trocar de pokemon", jogador_da_vez.getName());
+          log.logAcao("Vai trocar de Pokemon", jogador_da_vez.getName());;
+          log.SalvaAcaoArquivo("log.txt");
           int poke_troca = reader.nextInt(); // index do novo pokemon
           Pokemon pokemon_novo = jogador_da_vez.getPokemon(poke_troca);
           pokemon_da_vez = pokemon_novo;
@@ -71,11 +77,14 @@ class Jogo{
           break;
 
         case 3: // caso de correr
-          System.out.printf("%s tentou fugir", jogador_da_vez.getName());
+          log.logAcao("Tentou fugir", jogador_da_vez.getName());
+          log.SalvaAcaoArquivo("log.txt");
           break;
       }
       if (pokemon_inimigo.getVida() <= 0){
         System.out.printf("%s venceu", jogador_da_vez);
+        log.logAcao("Venceu", jogador_da_vez.getName());
+        log.SalvaAcaoArquivo("log.txt");
       }
 
       // mudança para o próximo jogador

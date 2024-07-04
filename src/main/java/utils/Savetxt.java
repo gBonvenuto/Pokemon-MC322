@@ -1,3 +1,4 @@
+package utils;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -6,7 +7,7 @@ public class Savetxt{
     private String jogador;
     private LocalTime horario;
 
-    Savetxt(String jogador, String acao){
+    public Savetxt(String jogador, String acao){
         this.jogador = jogador;
         this.acao = acao;
         horario = LocalTime.now();

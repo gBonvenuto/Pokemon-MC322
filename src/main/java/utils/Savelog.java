@@ -1,3 +1,4 @@
+package utils;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,10 +17,16 @@ public class Savelog {
         acoes.add(acao);
     }
 
+    /* modo de uso
+     SaveLog log = new SaveLog();
+     log.logAcao("resolveu atacar", jogador.getNome());
+     log.salvaAcaoArquivo(nome_do_arquivo);
+    */
+
     public void SalvaAcaoArquivo(String nomeArquivo){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))){
             for (Savetxt acao : acoes){
-                writer.write(acao.toString());
+                writer.write(acao.toString()); // salva string num arquivo texto
                 writer.newLine();
             }
         } catch (IOException e){
