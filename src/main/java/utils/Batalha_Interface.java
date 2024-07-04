@@ -12,6 +12,14 @@ import java.util.List;
 public class Batalha_Interface extends JFrame {
     private Icon pokemon1;
     private Icon pokemon2;
+    JFrame batalha = new JFrame("Batalha");
+    batalha.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    batalha.setSize(600, 400);
+    batalha.setLayout(new BorderLayout());
 
-    public Batalha
+    public Batalha_Interface() {
+        JButton atacar = new JButton("Atacar");
+        JButton passa = new JButton("Passa a vez");
+        JButton troca = new JButton("Troca");
+    }
 }
