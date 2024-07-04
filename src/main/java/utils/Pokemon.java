@@ -149,6 +149,7 @@ public class Pokemon {
           Ataque ataque = null;
           try {
             ataque = at.getDeclaredConstructor().newInstance();
+            System.out.println("ataque: "+ataque.getNome());
           } catch (Exception e) {
             System.err.println("Não foi possível definir esse ataque");
           }
