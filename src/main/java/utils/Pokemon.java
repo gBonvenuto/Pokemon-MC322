@@ -9,7 +9,7 @@ import tipos.*;
 public class Pokemon {
 
   String nome;
-  int vida = 300; // todos os pokemons iniciam com 300 de vida
+  private int vida = 300; // todos os pokemons iniciam com 300 de vida
 
   List<Class<? extends Tipo>> tipo;
   List<Class<? extends Ataque>> ataques = new ArrayList<>();  
@@ -38,16 +38,24 @@ public class Pokemon {
     return this.ataques;
   }
 
+  public void reduzVida(int dano){
+    this.vida -= dano;
+  }
+
+
+
   // método de atacar
-  public int ataca(Pokemon pokemon) {
+  public void ataca(Pokemon pokemon) {
     // deve escolher o ataque
     Scanner sc = new Scanner(System.in);
     System.out.println("Escolha o ataque"); 
 
     int i = 0;
     int dano = 0;
+
     for (Class<? extends Ataque> at : ataques) {
-      Ataque ataque;
+      Ataque ataque; // pq isso ta declarado aq dentro?
+
       try {
         ataque = at.getDeclaredConstructor().newInstance();
       } catch (Exception e) {
@@ -57,7 +65,7 @@ public class Pokemon {
       i++;
       System.out.println(i + ataque.getNome());
     }
-
+    
     int escolha = sc.nextInt();
 
     do {
@@ -69,19 +77,33 @@ public class Pokemon {
 
       escolha = sc.nextInt();
 
+      Ataque ataque = null; // declaração do ataque
+
       // Cada pokemon tem 4 ataques 
       try {
-        dano = switch (escolha) {
+        switch (escolha) {
 
-          case 1 -> (int) ataques.get(0).getMethod("getDano").invoke(null);
+          case 1:
+            ataque = ataques.get(0).getDeclaredConstructor().newInstance();
+            dano = ataque.getDano();
+            break;
 
-          case 2 -> (int) ataques.get(1).getMethod("getDano").invoke(null);
-
-          case 3 -> (int) ataques.get(2).getMethod("getDano").invoke(null);
-
-          case 4 -> (int) ataques.get(3).getMethod("getDano").invoke(null);
-
-          default -> -1;
+          case 2:
+            ataque = ataques.get(1).getDeclaredConstructor().newInstance();
+            dano = ataque.getDano();
+            break;
+          case 3:
+            ataque = ataques.get(1).getDeclaredConstructor().newInstance();
+            dano = ataque.getDano();
+            break;
+          case 4:
+            ataque = ataques.get(3).getDeclaredConstructor().newInstance();
+            dano = ataque.getDano();
+            break;
+          default:
+           dano = 0;
+           ataque = null;
+           break;
 
         };
       } catch (Exception e) {
@@ -89,12 +111,14 @@ public class Pokemon {
       }
 
     } while (escolha < 1 || escolha > 4); // restringe a escolha do usuário
+  
+    pokemon.reduzVida(dano);  // alvo toma o dano
 
     sc.close();
-    return dano;
   }
 
-                                                  // o ataque de um pokemon ao outro)
+  /* 
+  // o ataque de um pokemonao outro)
   public void defender(Ataque ataque, int dano) { // na função de lógica de jogo eu vou ter que lembrar disso ( associar
     // puxar os métodos de defesa da classe tipo
     try {
@@ -103,7 +127,7 @@ public class Pokemon {
       System.err.println("Não foi possível acessar essa defesa");
     }
     }
-
+*/
   // Temos enum de pokemons que são possíveis escolher.
   public static enum pokemon {
     BULBASAUR(1, "Bulbasaur", List.of(Planta.class, Veneno.class), new ArrayList<>()),

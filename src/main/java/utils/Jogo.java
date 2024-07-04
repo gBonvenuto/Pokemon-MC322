@@ -1,5 +1,4 @@
 package utils;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -68,6 +67,7 @@ class Jogo{
           Pokemon pokemon_novo = jogador_da_vez.getPokemon(poke_troca);
           pokemon_da_vez = pokemon_novo;
           break;
+
         case 3: // caso de correr
           System.out.printf("%s tentou fugir", jogador_da_vez.getName());
           break;
