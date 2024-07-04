@@ -152,6 +152,12 @@ public class Pokemon {
       this.ataques = ataques;
     }
 
+    // Essa função pega o enum pokemon e retorna um objeto Pokemon
+    public Pokemon inicializarPokemon(pokemon pokemon_enum){
+      Pokemon pokemon_objeto = new Pokemon(pokemon_enum.getName(), pokemon_enum.getTipos(), pokemon_enum.getAtaques());
+      return pokemon_objeto;
+    }
+
     public int getNumber() {
       return number;
     }
