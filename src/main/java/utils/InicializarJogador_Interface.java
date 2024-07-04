@@ -94,7 +94,7 @@ public class InicializarJogador_Interface extends JFrame {
     Jogo.setJogador1(new Jogador(nomeField.toString(), pokemonsEscolhidos));
   }
 
-  public static Jogador main(String[] args) {
+  public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {

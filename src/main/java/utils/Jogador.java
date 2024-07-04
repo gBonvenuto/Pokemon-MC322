@@ -57,7 +57,7 @@ public class Jogador {
   // função para pegar a lista de pokemons
 
   public Pokemon getPokemon(int index){
-    return pokemons[index];
+    return pokemons.get(index);
   }
 
   // Função que permite imprimir todas as informações do jogador (para debugging)
