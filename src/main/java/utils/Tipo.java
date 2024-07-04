@@ -12,10 +12,10 @@ public abstract class Tipo {
 
   // Esta função calcula a quantidade de dano que o Tipo deve levar
   // dependendo do golpe que ele levou
-  public int defesa(Ataque golpe) {
+  public int defesa(Ataque golpe, int dano) {
     // As fraquezas duplicam o dano levado
     if (this.buscaFraqueza(golpe.getTipo())) {
-      return 2 * golpe.getDano();
+      return 2 * dano;
 
     }
     // As imunidades fazem com que o pokemon não leve dano
