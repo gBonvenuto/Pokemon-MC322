@@ -19,7 +19,7 @@ Em seguida compile os arquivo:
 
 E então rode o jogo
 
-`java -cp main.Main`
+`java -cp bin/ main.Main`
 
 # Pokemon-MC322 V-1.0
 Projeto de pokemon no Terminal para a disciplina de MC322
