@@ -71,7 +71,9 @@ public class Interface extends JFrame {
                         if (nomePokemon == null) { // Usuário cancelou
                             return;
                         }
-                        pokemonEscolhido = Pokemon.fromName(nomePokemon);
+
+                        pokemonEscolhido = Pokemon.pokemon.fromName(nomePokemon).inicializarPokemon();
+
                         if (pokemonEscolhido != null) {
                             pokemonValido = true;
                         } else {
