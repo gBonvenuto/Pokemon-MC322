@@ -153,8 +153,8 @@ public class Pokemon {
     }
 
     // Essa função pega o enum pokemon e retorna um objeto Pokemon
-    public Pokemon inicializarPokemon(pokemon pokemon_enum){
-      Pokemon pokemon_objeto = new Pokemon(pokemon_enum.getName(), pokemon_enum.getTipos(), pokemon_enum.getAtaques());
+    public Pokemon inicializarPokemon(){
+      Pokemon pokemon_objeto = new Pokemon(name, tipos, ataques);
       return pokemon_objeto;
     }
 
