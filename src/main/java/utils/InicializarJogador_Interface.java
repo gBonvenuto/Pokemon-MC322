@@ -13,8 +13,12 @@ public class InicializarJogador_Interface extends JFrame {
 
   private JTextField nomeField;
   private JButton selecionarButton;
-  private JTextArea outputArea;
-  private JList listaPokemons;
+
+  private JComboBox<String> pokemon1;
+  private JComboBox<String> pokemon2;
+  private JComboBox<String> pokemon3;
+  private JComboBox<String> pokemon4;
+
   private List<Pokemon> pokemonsEscolhidos;
 
   private int jogador = 0;
@@ -45,28 +49,51 @@ public class InicializarJogador_Interface extends JFrame {
     nomePanel.add(nomeField);
 
     // Pokemons selecionados
+    GridBagLayout gridbag = new GridBagLayout();
+    GridBagConstraints constraints = new GridBagConstraints();
+
     JPanel pokemonsSelecionadosPanel = new JPanel();
-    pokemonsSelecionadosPanel.setLayout(new BorderLayout());
-    pokemonsSelecionadosPanel.add(new JLabel("Pokemon 1:"));
-    pokemonsSelecionadosPanel.add(new JLabel("\nPokemon 2:"));
-    pokemonsSelecionadosPanel.add(new JLabel("\nPokemon 3:"));
-    pokemonsSelecionadosPanel.add(new JLabel("\nPokemon 4:"));
+    pokemonsSelecionadosPanel.setLayout(gridbag);
 
-    // Painel para selecionar pokémons
-    JPanel pokemonPanel = new JPanel();
-    pokemonPanel.setLayout(new BorderLayout());
-    pokemonPanel.setBorder(BorderFactory.createTitledBorder("Seleção de Pokémons"));
+    pokemon1 = new JComboBox<String>(Pokemon.pokemon.lista());
+    pokemonsSelecionadosPanel.add(new JLabel("Pokemon 1: "), constraints);
 
-    listaPokemons = new JList<String>(Pokemon.pokemon.lista());
-    pokemonPanel.add(listaPokemons, BorderLayout.CENTER);
+    constraints.fill = GridBagConstraints.CENTER;
+    constraints.gridwidth = GridBagConstraints.REMAINDER;
+    pokemonsSelecionadosPanel.add(pokemon1, constraints);
 
+    constraints.weightx = 1.0;
+    constraints.gridwidth = GridBagConstraints.RELATIVE;
+    pokemon2 = new JComboBox<String>(Pokemon.pokemon.lista());
+    pokemonsSelecionadosPanel.add(new JLabel("Pokemon 2: "), constraints);
+
+    constraints.gridwidth = GridBagConstraints.REMAINDER;
+    pokemonsSelecionadosPanel.add(pokemon2, constraints);
+
+    constraints.weightx = 1.0;
+    constraints.gridwidth = GridBagConstraints.RELATIVE;
+    pokemon3 = new JComboBox<String>(Pokemon.pokemon.lista());
+    pokemonsSelecionadosPanel.add(new JLabel("Pokemon 3: "), constraints);
+
+    constraints.gridwidth = GridBagConstraints.REMAINDER;
+    pokemonsSelecionadosPanel.add(pokemon3, constraints);
+
+    constraints.weightx = 1.0;
+    constraints.gridwidth = GridBagConstraints.RELATIVE;
+    pokemon4 = new JComboBox<String>(Pokemon.pokemon.lista());
+    pokemonsSelecionadosPanel.add(new JLabel("Pokemon 4: "), constraints);
+
+    constraints.gridwidth = GridBagConstraints.REMAINDER;
+    pokemonsSelecionadosPanel.add(pokemon4, constraints);
+
+    constraints.weightx = 0.0;
+    constraints.anchor = GridBagConstraints.SOUTH;
     selecionarButton = new JButton("Selecionar Pokémons");
-    pokemonPanel.add(selecionarButton, BorderLayout.SOUTH);
+    pokemonsSelecionadosPanel.add(selecionarButton, constraints);
 
     // Adicionando componentes à janela principal
     add(nomePanel, BorderLayout.NORTH);
-    add(pokemonsSelecionadosPanel, BorderLayout.EAST);
-    add(pokemonPanel, BorderLayout.CENTER);
+    add(pokemonsSelecionadosPanel, BorderLayout.CENTER);
 
     // Inicialização dos pokémons escolhidos
     pokemonsEscolhidos = new ArrayList<>();
@@ -82,36 +109,8 @@ public class InicializarJogador_Interface extends JFrame {
           return;
         }
 
-        outputArea.setText(""); // Limpa o texto anterior
+        // TODO: Lógica de selecionar os pokemons
 
-        for (int i = 0; i < 4; i++) {
-          boolean pokemonValido = false;
-          Pokemon pokemonEscolhido = null;
-
-          while (!pokemonValido) {
-            String nomePokemon = JOptionPane.showInputDialog(InicializarJogador_Interface.this,
-                "Digite o nome do pokemon que você deseja escolher:");
-            if (nomePokemon == null) { // Usuário cancelou
-              return;
-            }
-
-            pokemonEscolhido = Pokemon.pokemon.fromName(nomePokemon).inicializarPokemon();
-
-            if (pokemonEscolhido != null) {
-              pokemonValido = true;
-            } else {
-              JOptionPane.showMessageDialog(InicializarJogador_Interface.this,
-                  "Não foi possível encontrar este pokemon, tente outro.",
-                  "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-          }
-
-          pokemonsEscolhidos.add(pokemonEscolhido);
-          outputArea.append("Pokemon escolhido: " + pokemonEscolhido.getNome() + "\n");
-
-        }
-
-        outputArea.append("\nJogador: " + nomeJogador + "\n");
       }
     });
     if(Jogo.getJogador1() == null)
