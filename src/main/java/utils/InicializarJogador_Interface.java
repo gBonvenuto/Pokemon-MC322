@@ -120,12 +120,12 @@ public class InicializarJogador_Interface extends JFrame {
         // Se Tivermos selecionado o jogador1, vamos agora selecionar o jogador 2
         if (jogador == 1)
           InicializarJogador_Interface.main(new String[0]); // Inicializa o Jogador 2
-        dispose();
-        if (jogador == 2)
+        if (jogador == 2) {
           System.out.println("Iniciando o jogo");
+          Batalha_Interface.main(new String[0]);
+        }
 
-        // TODO: Lógica de selecionar os pokemons
-
+        dispose();
       }
     });
     if (Jogo.getJogador1() == null)
