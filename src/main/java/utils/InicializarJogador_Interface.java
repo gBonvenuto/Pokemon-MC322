@@ -129,9 +129,9 @@ public class InicializarJogador_Interface extends JFrame {
       }
     });
     if (Jogo.getJogador1() == null)
-      Jogo.setJogador1(new Jogador(nomeField.toString(), pokemonsEscolhidos));
+      Jogo.setJogador1(new Jogador(nomeField.getText(), pokemonsEscolhidos));
     else if (Jogo.getJogador2() == null)
-      Jogo.setJogador2(new Jogador(nomeField.toString(), pokemonsEscolhidos));
+      Jogo.setJogador2(new Jogador(nomeField.getText(), pokemonsEscolhidos));
   }
 
   public static void main(String[] args) {

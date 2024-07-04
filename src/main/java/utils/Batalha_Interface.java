@@ -45,6 +45,7 @@ public class Batalha_Interface extends JFrame {
 
     c.gridwidth = GridBagConstraints.REMAINDER;
     c.gridx = 0;
+    panel.add(new JLabel("Jogador: "+jogador.getName()));
     panel.add(new JLabel("Pokemon: "+pokemonAtual.getNome()), c);
     panel.add(new JLabel("Vida: "+pokemonAtual.getVida()+"/300"), c);
     try{
