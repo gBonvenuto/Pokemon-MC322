@@ -8,8 +8,8 @@ class Jogo{
   boolean temVencedor = false;
 
 
-  private static Jogador jogador1;
-  private static Jogador jogador2;
+  private static Jogador jogador1 = null;
+  private static Jogador jogador2 = null;
 
   // loop de turnos baseado na quantidade de pokemons de cada jogador
   public boolean logicaJogo(Jogador jogador1, Jogador jogador2){
