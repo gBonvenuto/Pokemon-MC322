@@ -30,7 +30,7 @@ public class Batalha_Interface extends JFrame {
     JPanel jogador1_Panel = jogador_Panel(Jogo.getJogador1());
     add(jogador1_Panel, BorderLayout.WEST);
 
-    JPanel jogador2_Panel = jogador_Panel(Jogo.getJogador1());
+    JPanel jogador2_Panel = jogador_Panel(Jogo.getJogador2());
     add(jogador2_Panel, BorderLayout.EAST);
 
   }
