@@ -2,8 +2,6 @@ package utils;
 
 import javax.swing.*;
 
-import utils.Pokemon.pokemon;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
