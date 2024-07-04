@@ -44,6 +44,7 @@ class Jogo{
       System.out.printf("%s escolha o pokemon a atacar", jogador_da_vez.getName()); // fase de escolha de pokemon
       int poke_index = reader.nextInt();
       Pokemon pokemon_da_vez = jogador_da_vez.getPokemon(poke_index); // temos o pokemon que vai atacar
+      jogador_da_vez.setPokemonAtual(poke_index);
       
       System.out.printf("%s escolha o pokemon a atacar", jogador_inimigo); // fase de escolha de pokemon
       int poke_index2 = reader.nextInt();
@@ -63,9 +64,10 @@ class Jogo{
       
         case 2: // caso de troca de pokemon - refaz a escolha do pokemon -
           System.out.printf("%s vai trocar de pokemon", jogador_da_vez.getName());
-          int poke_troca = reader.nextInt();
+          int poke_troca = reader.nextInt(); // index do novo pokemon
           Pokemon pokemon_novo = jogador_da_vez.getPokemon(poke_troca);
           pokemon_da_vez = pokemon_novo;
+          jogador_da_vez.setPokemonAtual(poke_troca);
           break;
 
         case 3: // caso de correr
