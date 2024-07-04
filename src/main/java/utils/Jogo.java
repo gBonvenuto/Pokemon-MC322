@@ -1,13 +1,15 @@
+package utils;
+
 import java.util.Random;
 import java.util.Scanner;
-
-import utils.Jogador;
-import utils.Pokemon;
 
 class Jogo{
   // A lógica de jogo será implementada na parte 2
   boolean temVencedor = false;
 
+
+  private static Jogador jogador1;
+  private static Jogador jogador2;
 
   // loop de turnos baseado na quantidade de pokemons de cada jogador
   public boolean logicaJogo(Jogador jogador1, Jogador jogador2){
@@ -16,26 +18,28 @@ class Jogo{
     // fazer um random para saber qual jogador vai começar primeiro
     Random random = new Random();
     int moeda = random.nextInt(1,2);
+
+    // ordem de jogo
+    Jogador jogador_da_vez; // vai oscilar entre jogador 1 ou 2
+    Jogador jogador_inimigo; // vai oscilar entre 1 ou 2
     
+    switch (moeda) {
+      case 1:
+        jogador_da_vez = jogador1;
+        jogador_inimigo = jogador2;
+        break;
+      case 2:
+        jogador_da_vez = jogador2;
+        jogador_inimigo = jogador1;
+        break;
+      default:
+        System.out.println("Algo deu errado");
+        reader.close();
+        return false;
+    }
 
     while (this.temVencedor = false){
-      // ordem de jogo
-      Jogador jogador_da_vez = new Jogador(); // vai oscilar entre jogador 1 ou 2
-      Jogador jogador_inimigo = new Jogador(); // vai oscilar entre 1 ou 2
 
-      switch (moeda) {
-        case 1:
-          jogador_da_vez = jogador1;
-          jogador_inimigo = jogador2;
-          break;
-        case 2:
-          jogador_da_vez = jogador2;
-          jogador_inimigo = jogador1;
-          break;
-        default:
-          System.out.println("Algo deu errado");
-          break;
-      }
 
       // 1. cada jogador escolhe o seu pokemon
       System.out.printf("%s escolha o pokemon a atacar", jogador_da_vez.getName()); // fase de escolha de pokemon
@@ -73,18 +77,31 @@ class Jogo{
       }
 
       // mudança para o próximo jogador
-      if (jogador_da_vez == jogador1){
-        jogador_da_vez = jogador2;
-      }
-      else{
-        jogador_da_vez  = jogador1;
-      }
+      Jogador tmp = jogador_da_vez;
+      jogador_da_vez = jogador_inimigo;
+      jogador_inimigo = tmp;
 
     }
     // fechamento do reader
     reader.close();
 
     return temVencedor = true;
+  }
+
+  public static void setJogador1(Jogador jogador){
+    jogador1 = jogador;
+  }
+
+  public static Jogador getJogador1(){
+    return jogador1;
+  }
+
+  public static void setJogador2(Jogador jogador){
+    jogador2 = jogador;
+  }
+
+  public static Jogador getJogador2(){
+    return jogador2;
   }
 
 

@@ -91,7 +91,7 @@ public class InicializarJogador_Interface extends JFrame {
         outputArea.append("\nJogador: " + nomeJogador + "\n");
       }
     });
-    jogador = new Jogador(nomeField.toString(), pokemonsEscolhidos);
+    Jogo.setJogador1(new Jogador(nomeField.toString(), pokemonsEscolhidos));
   }
 
   public static Jogador main(String[] args) {

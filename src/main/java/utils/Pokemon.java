@@ -39,8 +39,6 @@ public class Pokemon {
   }
 
   // método de atacar
-  // TODO: O funcionamento deste método ficará mais claro na parte 2 quando implementarmos
-  // o modo multiplayer
   public int ataca(Pokemon pokemon) {
     // deve escolher o ataque
     Scanner sc = new Scanner(System.in);
@@ -96,16 +94,15 @@ public class Pokemon {
     return dano;
   }
 
-  public void defender(Ataque ataque, int dano) { // na função de lógica de jogo eu vou ter que lembrar disso ( associar
                                                   // o ataque de um pokemon ao outro)
-
+  public void defender(Ataque ataque, int dano) { // na função de lógica de jogo eu vou ter que lembrar disso ( associar
     // puxar os métodos de defesa da classe tipo
     try {
       this.tipo.getClass().getMethod("defesa").invoke(ataque);
     } catch (Exception e) {
       System.err.println("Não foi possível acessar essa defesa");
     }
-  }
+    }
 
   // Temos enum de pokemons que são possíveis escolher.
   public static enum pokemon {
