@@ -9,8 +9,19 @@ public class GemaDoPoder extends Ataque{
   static int dano = 60;
   static Class<? extends Tipo> tipo = Pedra.class;
 
-  public String getNomeAtaque(){
+  @Override
+  public String getNome() {
     return nome;
-}
+  }
+
+  @Override
+  public int getDano() {
+    return dano;
+  }
+
+  @Override
+  public Class<? extends Tipo> getTipo() {
+    return tipo;
+  }
 }
 // pedra
