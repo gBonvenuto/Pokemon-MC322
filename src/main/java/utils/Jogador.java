@@ -1,6 +1,9 @@
 package utils;
 
 import java.util.Scanner;
+
+import utils.Pokemon.pokemon;
+
 import java.util.List;
 
 // TODO: Devido ao tempo não foi possível implementar o servidor, e por isso
@@ -14,6 +17,7 @@ public class Jogador {
   Scanner scanner = new Scanner(System.in);
   private String nome;
   private List<Pokemon> pokemons; // Cada jogador terá somente 4 pokemons
+  private int pokemon_atual = 0;
 
   // Não é necessário passar parâmetros porque os valores de Jogador serão
   // definidos no stdin
@@ -57,6 +61,13 @@ public class Jogador {
 
   public Pokemon getPokemon(int index){
     return pokemons.get(index);
+  }
+
+  public void setPokemonAtual(int index){
+    this.pokemon_atual = index;
+  }
+  public Pokemon getPokemonAtual(){
+    return pokemons.get(pokemon_atual);
   }
 
   // Função que permite imprimir todas as informações do jogador (para debugging)
