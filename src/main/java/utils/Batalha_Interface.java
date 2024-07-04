@@ -35,7 +35,7 @@ public class Batalha_Interface extends JFrame {
 
   }
 
-  private JPanel jogador_Panel(Jogador jogador){
+  private JPanel jogador_Panel(Jogador jogador) {
     Pokemon pokemonAtual = jogador.getPokemonAtual();
 
     JPanel panel = new JPanel();
@@ -45,16 +45,15 @@ public class Batalha_Interface extends JFrame {
 
     c.gridwidth = GridBagConstraints.REMAINDER;
     c.gridx = 0;
-    panel.add(new JLabel("Jogador: "+jogador.getName()));
-    panel.add(new JLabel("Pokemon: "+pokemonAtual.getNome()), c);
-    panel.add(new JLabel("Vida: "+pokemonAtual.getVida()+"/300"), c);
-    try{
-      BufferedImage bulbassauro = ImageIO.read(new File("src/main/java/resources/"+pokemonAtual.getNome()+".png"));
+    panel.add(new JLabel("Jogador: " + jogador.getName()));
+    panel.add(new JLabel("Pokemon: " + pokemonAtual.getNome()), c);
+    panel.add(new JLabel("Vida: " + pokemonAtual.getVida() + "/300"), c);
+    try {
+      BufferedImage bulbassauro = ImageIO.read(new File("src/main/java/resources/" + pokemonAtual.getNome() + ".png"));
       JLabel image_label = new JLabel(new ImageIcon(getScaledImage(bulbassauro, 100, 100)));
-      image_label.setPreferredSize(new Dimension(100,100));
+      image_label.setPreferredSize(new Dimension(100, 100));
       panel.add(image_label, c);
-    }
-    catch(IOException e){
+    } catch (IOException e) {
       System.err.println("Imagem não encontrada");
     }
 
@@ -62,29 +61,38 @@ public class Batalha_Interface extends JFrame {
     JButton trocar_button = new JButton("Trocar de Pokemon");
     JButton correr_button = new JButton("Correr");
 
-    // Achar um jeito de arrumar isso aqui
-    // JComboBox ataques = new JComboBox<String>(pokemonAtual.getAtaques());
+    JComboBox<String> ataques = new JComboBox<String>(pokemonAtual.getAtaquesString());
 
     c.gridwidth = GridBagConstraints.RELATIVE;
-    panel.add(atacar_button, c);
+    panel.add(ataques);
     c.gridwidth = GridBagConstraints.REMAINDER;
-    // panel.add(ataques);
+    panel.add(atacar_button, c);
 
     panel.add(trocar_button, c);
     panel.add(correr_button, c);
 
     atacar_button.addActionListener(new ActionListener() {
-      
       @Override
-      public void actionPerformed(ActionEvent e) {
-        // Jogo.setEscolha(1);
+      public void actionPerformed(ActionEvent e) { 
+
+        Jogo.setEscolha(1); 
       }
+    });
+
+    trocar_button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) { Jogo.setEscolha(2); }
+    });
+
+    correr_button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) { Jogo.setEscolha(3); }
     });
 
     return panel;
   }
 
-  private Image getScaledImage(Image srcImg, int w, int h){
+  private Image getScaledImage(Image srcImg, int w, int h) {
     BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
     Graphics2D g2 = resizedImg.createGraphics();
 
@@ -93,7 +101,7 @@ public class Batalha_Interface extends JFrame {
     g2.dispose();
 
     return resizedImg;
-}
+  }
 
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {

@@ -9,6 +9,16 @@ public class Veneno extends Tipo {
 
   static String tipo = "Veneno";
   static String img = "path"; // Caminho para imagem do elemento
+
+  public Veneno(){
+    tipo = "Veneno";
+    img = "";
+  }
+
+  @Override
+  public String getTipo() {
+    return tipo;
+  }
                                   
   // Imunidade causa 0 de dano
   static List<Class<? extends Tipo>> imunidade = new ArrayList<>(); // Veneno não tem imunidade 

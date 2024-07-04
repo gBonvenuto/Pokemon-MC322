@@ -3,15 +3,17 @@ import java.util.Scanner;
 
 class Jogo{
   // A lógica de jogo será implementada na parte 2
-  boolean temVencedor = false;
-  int escolha;
+  private static boolean  temVencedor = false;
+  private static int escolha;
 
-  Savelog log = new Savelog();
+  private static Savelog log = new Savelog();
 
   private static Jogador jogador1 = null;
   private static Jogador jogador2 = null;
   private static Jogador jogador_da_vez = null;
   private static Jogador jogador_inimigo = null;
+
+  private static Class<? extends Ataque> at = null;
 
   // loop de turnos baseado na quantidade de pokemons de cada jogador
   public static void logicaJogo(Jogador jogador1, Jogador jogador2){
@@ -21,34 +23,36 @@ class Jogo{
    
   
 
-  public void tick(){
+  public static void tick(){
 
     Scanner reader = new Scanner(System.in); // criando leitor do ataque
 
-    if(this.temVencedor = false){
+    if(temVencedor = false){
 
       // 1. cada jogador escolhe o seu pokemon
-      log.logAcao("Escolhe pokemon", jogador_da_vez.getName()); // fase de escolha de pokemon
-      log.SalvaAcaoArquivo("log.java");
-      int poke_index = reader.nextInt();
-      Pokemon pokemon_da_vez = jogador_da_vez.getPokemon(poke_index); // temos o pokemon que vai atacar
-      jogador_da_vez.setPokemonAtual(poke_index);
-      
-      log.logAcao("Escolhe pokemon", jogador_inimigo.getName()); // fase de escolha de pokemon
-      log.SalvaAcaoArquivo("log.java");
-      int poke_index2 = reader.nextInt();
-      Pokemon pokemon_inimigo = jogador_inimigo.getPokemon(poke_index2);
+      // log.logAcao("Escolhe pokemon", jogador_da_vez.getName()); // fase de escolha de pokemon
+      // log.SalvaAcaoArquivo("log.java");
+      // int poke_index = reader.nextInt();
+      // Pokemon pokemon_da_vez = jogador_da_vez.getPokemon(poke_index); // temos o pokemon que vai atacar
+      // jogador_da_vez.setPokemonAtual(poke_index);
+      // 
+      // log.logAcao("Escolhe pokemon", jogador_inimigo.getName()); // fase de escolha de pokemon
+      // log.SalvaAcaoArquivo("log.java");
+      // int poke_index2 = reader.nextInt();
+      // Pokemon pokemon_inimigo = jogador_inimigo.getPokemon(poke_index2);
 
       // geramos o menu
-      System.out.println("******* Menu *******");
-      System.out.println("1. Atacar\n2. Trocar Pokemon\n3. Correr");
+      // System.out.println("******* Menu *******");
+      // System.out.println("1. Atacar\n2. Trocar Pokemon\n3. Correr");
 
+      Pokemon pokemon_da_vez = jogador_da_vez.getPokemonAtual();
+      Pokemon pokemon_inimigo = jogador_inimigo.getPokemonAtual();
 
       switch (escolha) {
         case 1: // caso de ataque
           log.logAcao("Vai atacar", jogador_da_vez.getName());
           log.SalvaAcaoArquivo("log.java");
-          pokemon_da_vez.ataca(pokemon_inimigo);
+          pokemon_da_vez.ataca(pokemon_inimigo, at);
           break;
       
         case 2: // caso de troca de pokemon - refaz a escolha do pokemon -
@@ -99,8 +103,12 @@ class Jogo{
 
   // função para escolha da ação
 
-  public void setEscolha(int numero){
-    this.escolha = numero;
+  public static void setEscolha(int numero){
+    escolha = numero;
+  }
+
+  public static void setAtaque(Class<? extends Ataque> ataque){
+    at = ataque;
   }
 
 

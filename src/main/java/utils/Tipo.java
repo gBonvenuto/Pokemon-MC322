@@ -10,6 +10,9 @@ public abstract class Tipo {
   static List<Class<? extends Tipo>> fraqueza; // Fraqueza gera o dobro do dano
   static List<Class<? extends Tipo>> resistencia; // Resistencia causa metade do dano
 
+  public Tipo(){
+  }
+
   // Esta função calcula a quantidade de dano que o Tipo deve levar
   // dependendo do golpe que ele levou
   public int defesa(Ataque golpe, int dano) {
