@@ -123,6 +123,7 @@ public class InicializarJogador_Interface extends JFrame {
         if (jogador == 2) {
           System.out.println("Iniciando o jogo");
           Batalha_Interface.main(new String[0]);
+          Jogo.logicaJogo();
         }
 
         dispose();

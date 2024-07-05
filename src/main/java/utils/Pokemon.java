@@ -68,7 +68,6 @@ public class Pokemon {
   // método de atacar
   public void ataca(Pokemon pokemon, Class<? extends Ataque> at) {
     // deve escolher o ataque
-    System.out.println("Escolha o ataque");
 
     int dano = 0;
 
@@ -83,6 +82,9 @@ public class Pokemon {
     }
 
     pokemon.reduzVida(dano); // alvo toma o dano
+
+    System.out.println(this.getNome()+" está atacando "+ pokemon.getNome()+ " com "+ ataque.getNome()+ " que agora possui " + pokemon.getVida());
+
   }
 
   // Temos enum de pokemons que são possíveis escolher.
@@ -149,12 +151,24 @@ public class Pokemon {
           Ataque ataque = null;
           try {
             ataque = at.getDeclaredConstructor().newInstance();
-            System.out.println("ataque: "+ataque.getNome());
           } catch (Exception e) {
             System.err.println("Não foi possível definir esse ataque");
           }
-          if (tipos.contains(ataque.getTipo()))
+          if (tipos.contains(ataque.getTipo())) {
+            try {
+              ataque = at.getDeclaredConstructor().newInstance();
+              System.out.println("ataque: " + ataque.getNome() + " é valido");
+            } catch (Exception e) {
+              System.err.println("Não foi possível definir esse ataque");
+            }
             break;
+          }
+          try {
+            ataque = at.getDeclaredConstructor().newInstance();
+            System.out.println("ataque: " + ataque.getNome() + " NÃO é válido");
+          } catch (Exception e) {
+            System.err.println("Não foi possível definir esse ataque");
+          }
         }
 
         ataques.add(at);

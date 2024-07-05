@@ -17,7 +17,7 @@ class Jogo{
   private static Class<? extends Ataque> at = null;
 
   // loop de turnos baseado na quantidade de pokemons de cada jogador
-  public static void logicaJogo(Jogador jogador1, Jogador jogador2){
+  public static void logicaJogo(){
     jogador_da_vez = jogador1;
     jogador_inimigo = jogador2;
   }
@@ -28,7 +28,7 @@ class Jogo{
 
     Scanner reader = new Scanner(System.in); // criando leitor do ataque
 
-    if(temVencedor = false){
+    if(temVencedor == false){
 
       Pokemon pokemon_da_vez = jogador_da_vez.getPokemonAtual();
       Pokemon pokemon_inimigo = jogador_inimigo.getPokemonAtual();
