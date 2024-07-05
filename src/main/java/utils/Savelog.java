@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Savelog {
-  private static File path;
+  private static File path; // encontra o path para o arquivo de logs
 
   public static void setPath(File caminho) {
     path = new File(
