@@ -2,7 +2,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Jogo{
+public abstract class Jogo{
   // A lógica de jogo será implementada na parte 2
   private static boolean  temVencedor = false;
   private static int escolha;
@@ -23,8 +23,6 @@ class Jogo{
   
 
   public static void tick(){
-
-    Scanner reader = new Scanner(System.in); // criando leitor do ataque
 
     if(temVencedor == false){
 
@@ -56,7 +54,6 @@ class Jogo{
       jogador_inimigo = tmp;
 
     }
-    reader.close();
   }
   
 
