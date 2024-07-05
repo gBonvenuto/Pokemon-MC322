@@ -16,10 +16,12 @@ public class Jogador_Panel extends JPanel {
   private JLabel pokemonAtual_label = new JLabel();
   private JLabel vidaAtual_label = new JLabel();
   private JLabel image_label = new JLabel();
-  private JButton atacar_button = new JButton("Atacar");
-  private JButton trocar_button = new JButton("Trocar de Pokemon");
-  private JButton correr_button = new JButton("Correr");
+  private JButton atacar_button = null;
+  private JButton trocar_button = null;
+  private JButton correr_button = null;
   private JComboBox<String> ataques;
+  private GridBagLayout gridbag = new GridBagLayout();
+  private GridBagConstraints c = new GridBagConstraints();
 
   private Pokemon pokemonAtual() {
     return jogador.getPokemonAtual();
@@ -29,55 +31,31 @@ public class Jogador_Panel extends JPanel {
     ataques = new JComboBox<String>(jogador.getPokemonAtual().getAtaquesString());
   }
 
-  public void remove_buttons() {
-    // TODO: REMOVER BOTÕES
-  }
-
-  public void update_image_label() {
-    try {
-      BufferedImage bulbassauro = ImageIO
-          .read(new File("src/main/java/resources/" + jogador.getPokemonAtual().getNome() + ".png"));
-      image_label.setIcon(new ImageIcon(getScaledImage(bulbassauro, 100, 100)));
-      image_label.setPreferredSize(new Dimension(100, 100));
-    } catch (IOException e) {
-      System.err.println("Imagem não encontrada");
+  public void update_buttons(){
+    if(Jogo.getJogadorDaVez() == jogador){
+      add_buttons();
+    }
+    else if (atacar_button != null){
+      remove_buttons();
     }
   }
 
-  public void update_pokemonAtual_label() {
-    pokemonAtual_label = new JLabel("Pokemon: " + pokemonAtual().getNome());
-  };
+  public void remove_buttons() {
+    remove(atacar_button);
+    remove(trocar_button);
+    remove(correr_button);
+  }
 
-  public void update_vidaAtual_label() {
-    vidaAtual_label.setText("Vida: " + pokemonAtual().getVida() + "/300");
-  };
+  public void add_buttons() {
+    atacar_button = new JButton("Atacar");
+    trocar_button = new JButton("Trocar de Pokemon");
+    correr_button = new JButton("Correr");
 
-  public Jogador_Panel(Jogador jogador) {
-
-    this.jogador = jogador;
-
-    update_pokemonAtual_label();
-    update_vidaAtual_label();
-    update_ataques();
-    update_image_label();
-
-    GridBagLayout gridbag = new GridBagLayout();
-    GridBagConstraints c = new GridBagConstraints();
-    setLayout(gridbag);
-
-    c.gridwidth = GridBagConstraints.REMAINDER;
-    c.gridx = 0;
-    add(new JLabel("Jogador: " + jogador.getName()));
-
-    add(pokemonAtual_label, c);
-
-    add(vidaAtual_label, c);
-
-    add(image_label, c);
 
     c.gridwidth = GridBagConstraints.RELATIVE;
     add(ataques);
     c.gridwidth = GridBagConstraints.REMAINDER;
+
     add(atacar_button, c);
 
     add(trocar_button, c);
@@ -107,15 +85,59 @@ public class Jogador_Panel extends JPanel {
         Jogo.setEscolha(3);
       }
     });
+  }
+
+  public void update_image_label() {
+    try {
+      BufferedImage bulbassauro = ImageIO
+          .read(new File("src/main/java/resources/" + jogador.getPokemonAtual().getNome() + ".png"));
+      image_label.setIcon(new ImageIcon(getScaledImage(bulbassauro, 100, 100)));
+      image_label.setPreferredSize(new Dimension(100, 100));
+    } catch (IOException e) {
+      System.err.println("Imagem não encontrada");
+    }
+  }
+
+  public void update_pokemonAtual_label() {
+    pokemonAtual_label.setText("Pokemon: " + pokemonAtual().getNome());
+  };
+
+  public void update_vidaAtual_label() {
+    vidaAtual_label.setText("Vida: " + pokemonAtual().getVida() + "/300");
+  };
+
+  public Jogador_Panel(Jogador jogador) {
+
+    this.jogador = jogador;
+
+    update_pokemonAtual_label();
+    update_vidaAtual_label();
+    update_ataques();
+    update_image_label();
+
+    setLayout(gridbag);
+
+    c.gridwidth = GridBagConstraints.REMAINDER;
+    c.gridx = 0;
+    add(new JLabel("Jogador: " + jogador.getName()));
+
+    add(pokemonAtual_label, c);
+
+    add(vidaAtual_label, c);
+
+    add(image_label, c);
+    update_buttons();
 
   }
 
   private void updatePanels() {
+
+
     Batalha_Interface.jogador1_Panel.update_pokemonAtual_label();
     Batalha_Interface.jogador1_Panel.update_vidaAtual_label();
     Batalha_Interface.jogador1_Panel.update_ataques();
     Batalha_Interface.jogador1_Panel.update_image_label();
-    remove(atacar_button);
+    Batalha_Interface.jogador1_Panel.update_buttons();
 
     Batalha_Interface.jogador1_Panel.invalidate();
     Batalha_Interface.jogador1_Panel.validate();
@@ -125,8 +147,7 @@ public class Jogador_Panel extends JPanel {
     Batalha_Interface.jogador2_Panel.update_vidaAtual_label();
     Batalha_Interface.jogador2_Panel.update_ataques();
     Batalha_Interface.jogador2_Panel.update_image_label();
-
-    System.out.println("Vida: "+vidaAtual_label.getText());
+    Batalha_Interface.jogador2_Panel.update_buttons();
 
     Batalha_Interface.jogador2_Panel.invalidate();
     Batalha_Interface.jogador2_Panel.validate();

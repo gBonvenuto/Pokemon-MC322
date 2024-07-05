@@ -83,6 +83,10 @@ class Jogo{
     jogador2 = jogador;
   }
 
+  public static Jogador getJogadorDaVez(){
+    return jogador_da_vez;
+  }
+
   public static Jogador getJogador2(){
     return jogador2;
   }
