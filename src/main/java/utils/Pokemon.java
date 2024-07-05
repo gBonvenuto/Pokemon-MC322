@@ -137,12 +137,7 @@ public class Pokemon {
 
       List<Class<? extends Ataque>> ataques = new ArrayList<>();
 
-      System.err.println("Inicializando o pokemon " + name);
-      try {
-        System.err.println("Tipo: " + tipos.get(0).getConstructor().newInstance().getTipo());
-      } catch (Exception e) {
-      }
-
+      Savelog.log("Inicializando o pokemon " + name);
       // Escolhendo ataques aleatórios baseados no tipo do pokemon
       for (int i = 0; i < 4; i++) {
         Class<? extends Ataque> at = null;
@@ -158,19 +153,7 @@ public class Pokemon {
             System.err.println("Não foi possível definir esse ataque");
           }
           if (tipos.contains(ataque.getTipo())) {
-            try {
-              ataque = at.getDeclaredConstructor().newInstance();
-              System.out.println("ataque: " + ataque.getNome() + " é valido");
-            } catch (Exception e) {
-              System.err.println("Não foi possível definir esse ataque");
-            }
             break;
-          }
-          try {
-            ataque = at.getDeclaredConstructor().newInstance();
-            System.out.println("ataque: " + ataque.getNome() + " NÃO é válido");
-          } catch (Exception e) {
-            System.err.println("Não foi possível definir esse ataque");
           }
         }
 
