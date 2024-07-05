@@ -7,7 +7,7 @@ class Jogo{
   private static boolean  temVencedor = false;
   private static int escolha;
 
-  // private static Savelog log = new Savelog();
+  //static Savelog slog = new Savelog();
 
   private static Jogador jogador1 = null;
   private static Jogador jogador2 = null;
@@ -37,20 +37,24 @@ class Jogo{
         case 1: // caso de ataque
           // log.logAcao("Vai atacar", jogador_da_vez.getName());
           // log.SalvaAcaoArquivo("log.java");
+          Savelog.log(jogador_da_vez.getName()+ "escolheu atacar");
           pokemon_da_vez.ataca(pokemon_inimigo, at);
           break;
       
         case 3: // caso de correr
           // log.logAcao("Tentou fugir", jogador_da_vez.getName());
           // log.SalvaAcaoArquivo("log.java");
+          Savelog.log(jogador_da_vez.getName()+ "escolheu correr");
           break;
       }
       if (pokemon_inimigo.getVida() <= 0){
         Batalha_Interface.appendLog(pokemon_inimigo.getNome()+" morreu");
         pokemon_inimigo.setNome(pokemon_inimigo.getNome()+" (Morto)");
         pokemon_inimigo.setAtaques(new ArrayList<>());
-        // log.SalvaAcaoArquivo("log.java");
+        Savelog.log(pokemon_da_vez.getNome() + "morre");
       }
+
+      Savelog.log("Mudando a vez");
 
       // mudança para o próximo jogador
       Jogador tmp = jogador_da_vez;
