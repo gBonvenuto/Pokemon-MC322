@@ -7,8 +7,6 @@ class Jogo{
   private static boolean  temVencedor = false;
   private static int escolha;
 
-  //static Savelog slog = new Savelog();
-
   private static Jogador jogador1 = null;
   private static Jogador jogador2 = null;
   private static Jogador jogador_da_vez = null;
@@ -35,15 +33,11 @@ class Jogo{
 
       switch (escolha) {
         case 1: // caso de ataque
-          // log.logAcao("Vai atacar", jogador_da_vez.getName());
-          // log.SalvaAcaoArquivo("log.java");
           Savelog.log(jogador_da_vez.getName()+ "escolheu atacar");
           pokemon_da_vez.ataca(pokemon_inimigo, at);
           break;
       
         case 3: // caso de correr
-          // log.logAcao("Tentou fugir", jogador_da_vez.getName());
-          // log.SalvaAcaoArquivo("log.java");
           Savelog.log(jogador_da_vez.getName()+ "escolheu correr");
           break;
       }
