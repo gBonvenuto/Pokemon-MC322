@@ -18,6 +18,5 @@ public class Main {
     UIManager.put("ComboBox.font", new Font("Arial", Font.PLAIN, 24));
 
     FileChooser_Interface.main(args);
-    // InicializarJogador_Interface.main(args); // Inicializa a interface
   }
 }
