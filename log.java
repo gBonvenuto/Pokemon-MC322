@@ -1,0 +1,11 @@
+Jogador pedro realizou Vai atacar as [14:39:30].
+Jogador paulo realizou Vai atacar as [14:39:34].
+Jogador pedro realizou Vai atacar as [14:39:39].
+Jogador paulo realizou Vai atacar as [14:39:40].
+Jogador pedro realizou Vai atacar as [14:39:42].
+Jogador paulo realizou Vai atacar as [14:39:44].
+Jogador pedro realizou Vai atacar as [14:39:45].
+Jogador paulo realizou Vai atacar as [14:39:49].
+Jogador pedro realizou Vai atacar as [14:39:50].
+Jogador paulo realizou Vai atacar as [14:39:51].
+Jogador pedro realizou Vai atacar as [14:39:54].
