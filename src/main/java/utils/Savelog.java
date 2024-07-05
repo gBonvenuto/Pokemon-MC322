@@ -1,40 +1,32 @@
 package utils;
+
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 public class Savelog {
-    private List<Savetxt> acoes;
+  private static File path;
 
-    public Savelog(){
-        acoes = new ArrayList<>();
+  public static void setPath(File caminho){
+    path = new File(caminho.getAbsolutePath()+File.separator+LocalDate.now().toString()+".log");
+  }
+
+  public static File getPath(){
+    return path;
+  }
+
+  public static void log(String str) {
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+      writer.append(str);
+      writer.newLine();
+      writer.close();
+      System.out.println(str);
+    } catch (Exception e) {
+      System.err.println("Não foi posível enconrtar o arquivo");
+      e.printStackTrace();
     }
+  }
 
-    public void logAcao(String tipoacao, String jogador) {
-        Savetxt acao = new Savetxt(jogador, tipoacao);
-        acoes.add(acao);
-    }
-
-    /* modo de uso
-     SaveLog log = new SaveLog();
-     log.logAcao("resolveu atacar", jogador.getNome());
-     log.salvaAcaoArquivo(nome_do_arquivo);
-    */
-
-    public void SalvaAcaoArquivo(String nomeArquivo){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))){
-            for (Savetxt acao : acoes){
-                writer.write(acao.toString()); // salva string num arquivo texto
-                writer.newLine();
-            }
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public List<Savetxt> getAcoes() {
-        return acoes;
-    }
 }

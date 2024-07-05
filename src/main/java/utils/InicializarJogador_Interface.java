@@ -24,13 +24,6 @@ public class InicializarJogador_Interface extends JFrame {
 
   public InicializarJogador_Interface() {
 
-    UIManager.put("Label.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("TextField.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("TextArea.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("CheckBox.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("RadioButton.font", new Font("Arial", Font.PLAIN, 24));
-    UIManager.put("ComboBox.font", new Font("Arial", Font.PLAIN, 24));
 
     if (Jogo.getJogador1() == null)
       jogador = 1;
