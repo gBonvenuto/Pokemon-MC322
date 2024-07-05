@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Jogador_Panel extends JPanel {
   private Jogador jogador;
@@ -19,7 +18,8 @@ public class Jogador_Panel extends JPanel {
   private JButton atacar_button = null;
   private JButton trocar_button = null;
   private JButton correr_button = null;
-  private JComboBox<String> ataques;
+  private JComboBox<String> ataques = null;
+  private JComboBox<String> pokemons = null;
   private GridBagLayout gridbag = new GridBagLayout();
   private GridBagConstraints c = new GridBagConstraints();
 
@@ -27,9 +27,6 @@ public class Jogador_Panel extends JPanel {
     return jogador.getPokemonAtual();
   }
 
-  public void update_ataques() {
-    ataques = new JComboBox<String>(jogador.getPokemonAtual().getAtaquesString());
-  }
 
   public void update_buttons(){
     if(Jogo.getJogadorDaVez() == jogador){
@@ -44,21 +41,34 @@ public class Jogador_Panel extends JPanel {
     remove(atacar_button);
     remove(trocar_button);
     remove(correr_button);
+    remove(ataques);
+    remove(pokemons);
   }
 
   public void add_buttons() {
     atacar_button = new JButton("Atacar");
     trocar_button = new JButton("Trocar de Pokemon");
     correr_button = new JButton("Correr");
+    ataques = new JComboBox<String>(jogador.getPokemonAtual().getAtaquesString());
+    pokemons = new JComboBox<String>(jogador.getPokemonListString());
+    pokemons.setSelectedIndex(jogador.getPokemonAtualIndex());
 
+    if (jogador.getPokemonAtual().getVida() <= 0) {
+      atacar_button.setEnabled(false);
+    }
 
+    c.fill = GridBagConstraints.BOTH;
     c.gridwidth = GridBagConstraints.RELATIVE;
-    add(ataques);
+    add(ataques, c);
     c.gridwidth = GridBagConstraints.REMAINDER;
-
     add(atacar_button, c);
 
+    c.fill = GridBagConstraints.BOTH;
+    c.gridwidth = GridBagConstraints.RELATIVE;
+    add(pokemons, c);
+    c.gridwidth = GridBagConstraints.REMAINDER;
     add(trocar_button, c);
+
     add(correr_button, c);
 
     atacar_button.addActionListener(new ActionListener() {
@@ -76,6 +86,10 @@ public class Jogador_Panel extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
         Jogo.setEscolha(2);
+        jogador.setPokemonAtual(pokemons.getSelectedIndex());
+        Jogo.tick();
+
+        updatePanels();
       }
     });
 
@@ -83,6 +97,9 @@ public class Jogador_Panel extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
         Jogo.setEscolha(3);
+        Jogo.tick();
+
+        updatePanels();
       }
     });
   }
@@ -107,19 +124,18 @@ public class Jogador_Panel extends JPanel {
   };
 
   public Jogador_Panel(Jogador jogador) {
+    setSize(800, 800);
 
     this.jogador = jogador;
 
     update_pokemonAtual_label();
     update_vidaAtual_label();
-    update_ataques();
     update_image_label();
 
     setLayout(gridbag);
 
     c.gridwidth = GridBagConstraints.REMAINDER;
-    c.gridx = 0;
-    add(new JLabel("Jogador: " + jogador.getName()));
+    add(new JLabel("Jogador: " + jogador.getName()), c);
 
     add(pokemonAtual_label, c);
 
@@ -135,7 +151,6 @@ public class Jogador_Panel extends JPanel {
 
     Batalha_Interface.jogador1_Panel.update_pokemonAtual_label();
     Batalha_Interface.jogador1_Panel.update_vidaAtual_label();
-    Batalha_Interface.jogador1_Panel.update_ataques();
     Batalha_Interface.jogador1_Panel.update_image_label();
     Batalha_Interface.jogador1_Panel.update_buttons();
 
@@ -145,7 +160,6 @@ public class Jogador_Panel extends JPanel {
 
     Batalha_Interface.jogador2_Panel.update_pokemonAtual_label();
     Batalha_Interface.jogador2_Panel.update_vidaAtual_label();
-    Batalha_Interface.jogador2_Panel.update_ataques();
     Batalha_Interface.jogador2_Panel.update_image_label();
     Batalha_Interface.jogador2_Panel.update_buttons();
 

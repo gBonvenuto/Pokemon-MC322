@@ -23,6 +23,15 @@ public class InicializarJogador_Interface extends JFrame {
   private int jogador = 0;
 
   public InicializarJogador_Interface() {
+
+    UIManager.put("Label.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("TextField.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("TextArea.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("CheckBox.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("RadioButton.font", new Font("Arial", Font.PLAIN, 24));
+    UIManager.put("ComboBox.font", new Font("Arial", Font.PLAIN, 24));
+
     if (Jogo.getJogador1() == null)
       jogador = 1;
     else if (Jogo.getJogador2() == null)
@@ -33,14 +42,13 @@ public class InicializarJogador_Interface extends JFrame {
     else if (jogador == 2)
       setTitle("Seleção do Jogador 2");
 
-    setSize(400, 300);
+    setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
     setLayout(new BorderLayout());
 
     // Painel para o nome do jogador
     JPanel nomePanel = new JPanel();
-    nomePanel.setLayout(new FlowLayout());
     if (jogador == 1)
       nomePanel.add(new JLabel("Nome do jogador 1:"));
     if (jogador == 2)
@@ -88,12 +96,17 @@ public class InicializarJogador_Interface extends JFrame {
 
     constraints.weightx = 0.0;
     constraints.anchor = GridBagConstraints.SOUTH;
+
+    JPanel selecionarPanel = new JPanel();
+    selecionarPanel.setLayout(new FlowLayout());
+
     selecionarButton = new JButton("Selecionar Pokémons");
-    pokemonsSelecionadosPanel.add(selecionarButton, constraints);
+    selecionarPanel.add(selecionarButton, constraints);
 
     // Adicionando componentes à janela principal
     add(nomePanel, BorderLayout.NORTH);
     add(pokemonsSelecionadosPanel, BorderLayout.CENTER);
+    add(selecionarPanel, BorderLayout.SOUTH);
 
     // Inicialização dos pokémons escolhidos
     pokemonsEscolhidos = new ArrayList<>();
@@ -112,16 +125,46 @@ public class InicializarJogador_Interface extends JFrame {
           return;
         }
 
-        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon1.getSelectedItem()).inicializarPokemon());
-        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon2.getSelectedItem()).inicializarPokemon());
-        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon3.getSelectedItem()).inicializarPokemon());
-        pokemonsEscolhidos.add(Pokemon.pokemon.fromName((String) pokemon4.getSelectedItem()).inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.values()[pokemon1.getSelectedIndex()].inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.values()[pokemon2.getSelectedIndex()].inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.values()[pokemon3.getSelectedIndex()].inicializarPokemon());
+        pokemonsEscolhidos.add(Pokemon.pokemon.values()[pokemon4.getSelectedIndex()].inicializarPokemon());
+
+        // Caso haja pokemons repetidos
+
+        // pokemon2
+        if (pokemon2.getSelectedIndex() == pokemon1.getSelectedIndex())
+          pokemonsEscolhidos.get(1).setNome(pokemonsEscolhidos.get(1).getNome() + " 2");
+
+        // pokemon3
+        int pokemon_i = 1;
+        if (pokemon3.getSelectedIndex() == pokemon1.getSelectedIndex())
+          pokemon_i++;
+        if (pokemon3.getSelectedIndex() == pokemon2.getSelectedIndex())
+          pokemon_i++;
+        if (pokemon_i > 1)
+          pokemonsEscolhidos.get(2).setNome(pokemonsEscolhidos.get(2).getNome() + " " + pokemon_i);
+
+        // pokemon4
+        pokemon_i = 1;
+        if (pokemon4.getSelectedIndex() == pokemon1.getSelectedIndex())
+          pokemon_i++;
+        if (pokemon4.getSelectedIndex() == pokemon2.getSelectedIndex())
+          pokemon_i++;
+        if (pokemon4.getSelectedIndex() == pokemon3.getSelectedIndex())
+          pokemon_i++;
+        if (pokemon_i > 1)
+          pokemonsEscolhidos.get(3).setNome(pokemonsEscolhidos.get(3).getNome() + " " + pokemon_i);
 
         // Se Tivermos selecionado o jogador1, vamos agora selecionar o jogador 2
-        if (jogador == 1)
+        if (jogador == 1) {
           InicializarJogador_Interface.main(new String[0]); // Inicializa o Jogador 2
+          Jogo.setJogador1(new Jogador(nomeField.getText(), pokemonsEscolhidos));
+          System.out.println("Jogador1: " + Jogo.getJogador1().getName());
+        }
         if (jogador == 2) {
           System.out.println("Iniciando o jogo");
+          Jogo.setJogador2(new Jogador(nomeField.getText(), pokemonsEscolhidos));
           Batalha_Interface.main(new String[0]);
           Jogo.logicaJogo();
         }
@@ -129,10 +172,6 @@ public class InicializarJogador_Interface extends JFrame {
         dispose();
       }
     });
-    if (Jogo.getJogador1() == null)
-      Jogo.setJogador1(new Jogador(nomeField.getText(), pokemonsEscolhidos));
-    else if (Jogo.getJogador2() == null)
-      Jogo.setJogador2(new Jogador(nomeField.getText(), pokemonsEscolhidos));
   }
 
   public static void main(String[] args) {

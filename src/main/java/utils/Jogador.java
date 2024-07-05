@@ -12,45 +12,22 @@ public class Jogador {
   private List<Pokemon> pokemons; // Cada jogador terá somente 4 pokemons
   private int pokemon_atual = 0;
 
-  // Não é necessário passar parâmetros porque os valores de Jogador serão
-  // definidos no stdin
   public Jogador(String nome,  List<Pokemon> pokemons) {
     this.nome = nome;
     this.pokemons = pokemons;
   }
 
-  // Esta função mostra o nome dos pokemons que podemo ser escolhidos até o
-  // momento e permite que o jogador selecione dentre eles
-  // public void SelecionarPokemons() {
-  //   boolean pokemon_valido = false;
-  //   Pokemon.pokemon pokemon_escolhido;
-  //
-  //   List<Ataque.ataques> todos_os_ataques = new ArrayList<Ataque.ataques>();
-  //
-  //   for (Ataque.ataques ataque : Ataque.ataques.values()) {
-  //     todos_os_ataques.add(ataque);
-  //   }
-  //
-  //   for (int i = 0; i < 4; i++) {
-  //     pokemon_valido = false;
-  //     Pokemon.pokemon.lista();
-  //
-  //     // Repetimos este passo até que o jogador escolha um poquemon válido
-  //     do {
-  //       System.out.println("Digite o nome do pokemon que você deseja escolher");
-  //       pokemon_escolhido = Pokemon.pokemon.fromName(scanner.next());
-  //       if (pokemon_escolhido != null) {
-  //         pokemon_valido = true;
-  //       } else {
-  //         System.out.println("\nXX Não foi possível encontrar este pokemon, tente outro XX\n");
-  //       }
-  //     } while (!pokemon_valido);
-  //     pokemons[i] = new Pokemon(pokemon_escolhido.getName(), pokemon_escolhido.getTipos(),
-  //         null);
-  //   }
-  // }
-
-  // função para pegar a lista de pokemons
+  public List<Pokemon> getPokemonList(){
+    return pokemons;
+  }
+  
+  public String[] getPokemonListString(){
+    String[] list = new String[4];
+    for (int i = 0; i < list.length; i++) {
+      list[i] = pokemons.get(i).getNome();
+    }
+    return list;
+  }
 
   public Pokemon getPokemon(int index){
     return pokemons.get(index);
@@ -61,6 +38,9 @@ public class Jogador {
   }
   public Pokemon getPokemonAtual(){
     return pokemons.get(pokemon_atual);
+  }
+  public int getPokemonAtualIndex(){
+    return pokemon_atual;
   }
 
   // Função que permite imprimir todas as informações do jogador (para debugging)

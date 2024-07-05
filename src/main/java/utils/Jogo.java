@@ -40,22 +40,13 @@ class Jogo{
           pokemon_da_vez.ataca(pokemon_inimigo, at);
           break;
       
-        case 2: // caso de troca de pokemon - refaz a escolha do pokemon -
-          log.logAcao("Vai trocar de Pokemon", jogador_da_vez.getName());;
-          log.SalvaAcaoArquivo("log.java");
-          int poke_troca = reader.nextInt(); // index do novo pokemon
-          Pokemon pokemon_novo = jogador_da_vez.getPokemon(poke_troca);
-          pokemon_da_vez = pokemon_novo;
-          jogador_da_vez.setPokemonAtual(poke_troca);
-          break;
-
         case 3: // caso de correr
           log.logAcao("Tentou fugir", jogador_da_vez.getName());
           log.SalvaAcaoArquivo("log.java");
           break;
       }
       if (pokemon_inimigo.getVida() <= 0){
-        System.out.printf("%s morreu", pokemon_inimigo);
+        Batalha_Interface.appendLog(pokemon_inimigo.getNome()+" morreu");
         pokemon_inimigo.setNome(pokemon_inimigo.getNome()+" (Morto)");
         pokemon_inimigo.setAtaques(new ArrayList<>());
         log.SalvaAcaoArquivo("log.java");

@@ -83,7 +83,7 @@ public class Pokemon {
 
     pokemon.reduzVida(dano); // alvo toma o dano
 
-    System.out.println(this.getNome()+" está atacando "+ pokemon.getNome()+ " com "+ ataque.getNome()+ " que agora possui " + pokemon.getVida());
+    Batalha_Interface.appendLog(getNome()+" atacou "+pokemon.getNome()+" utlizando "+ataque.getNome() + " causando "+ dano + " de dano");
 
   }
 
@@ -123,7 +123,7 @@ public class Pokemon {
     private final int number;
     private final String name;
     private final List<Class<? extends Tipo>> tipos;
-    private List<Class<? extends Ataque>> ataques;
+    private List<Class<? extends Ataque>> ataques = new ArrayList<>();
 
     pokemon(int number, String name, List<Class<? extends Tipo>> tipos, List<Class<? extends Ataque>> ataques) {
       this.number = number;
@@ -134,6 +134,9 @@ public class Pokemon {
 
     // Essa função pega o enum pokemon e retorna um objeto Pokemon
     public Pokemon inicializarPokemon() {
+
+      List<Class<? extends Ataque>> ataques = new ArrayList<>();
+
       System.err.println("Inicializando o pokemon " + name);
       try {
         System.err.println("Tipo: " + tipos.get(0).getConstructor().newInstance().getTipo());
