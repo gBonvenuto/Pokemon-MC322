@@ -2,7 +2,9 @@ package utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -21,9 +23,8 @@ public class Savelog {
 
   public static void log(String str) {
     try {
-      BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-      writer.append(str);
-      writer.newLine();
+      PrintWriter writer = new PrintWriter(new FileOutputStream(path, true));
+      writer.append(str+"\n");
       writer.close();
       System.out.println(str);
     } catch (Exception e) {
