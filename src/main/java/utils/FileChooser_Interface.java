@@ -62,8 +62,6 @@ public class FileChooser_Interface extends JFrame {
         int returnVal = chooser.showOpenDialog(parent);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
           path = chooser.getSelectedFile();
-          System.out.println("You chose to open this file: " +
-              path);
           path_TextArea.setText(path.toString());
         }
       }
