@@ -9,11 +9,13 @@ import java.time.LocalTime;
 public class Savelog {
   private static File path;
 
-  public static void setPath(File caminho){
-    path = new File(caminho.getAbsolutePath()+File.separator+LocalDate.now()+"-"+LocalTime.now().toString()+".log");
+  public static void setPath(File caminho) {
+    path = new File(
+        caminho.getAbsolutePath() + File.separator + LocalDate.now() + "-" + LocalTime.now().getHour() + "-"
+            + LocalTime.now().getMinute() + "-" + LocalTime.now().getSecond() + ".log");
   }
 
-  public static File getPath(){
+  public static File getPath() {
     return path;
   }
 
