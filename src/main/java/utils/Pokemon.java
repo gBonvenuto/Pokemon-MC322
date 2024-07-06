@@ -84,6 +84,7 @@ public class Pokemon {
     pokemon.reduzVida(dano); // alvo toma o dano
 
     Batalha_Interface.appendLog(getNome()+" atacou "+pokemon.getNome()+" utlizando "+ataque.getNome() + " causando "+ dano + " de dano");
+    Savelog.log(getNome()+" atacou "+pokemon.getNome()+" utlizando "+ataque.getNome() + " causando "+ dano + " de dano");
 
   }
 
