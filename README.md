@@ -1,9 +1,11 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S_qDgaQAJqg?si=xZ96O0XDpU43rj66" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Grupo: 
 
-- Giancarlo Bonvenuto - 248527
-- Thiago Augusto de Tulio Nascimento - 252937
-- Pedro Henrique dos Reis Arcoverde - 254719
-- Pedro Henrique Pinheiro Linhares - 175807
+- Giancarlo Bonvenuto
+- Thiago Augusto de Tulio Nascimento
+- Pedro Henrique dos Reis Arcoverde
+- Pedro Henrique Pinheiro Linhares
 
 ![WhatsApp Image 2024-07-07 at 09 08 23](https://github.com/gBonvenuto/Pokemon-MC322/assets/141372403/8489d63f-5feb-4038-aff2-c631caaf2e99)
 
